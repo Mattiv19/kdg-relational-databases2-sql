@@ -1,0 +1,136 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="607197D9-911F-A6F7-9FC3-ED1F1A6887E7" name="Artists">
+<createdBy>mattiv</createdBy>
+<createdTime>2023-03-14 17:36:04 UTC</createdTime>
+<ownerDesignName>Recording_Studios</ownerDesignName>
+<engineerTo>
+<item key="8C94D348-E0D1-253C-A5EF-8822F3C5FCF1" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="artist_id" id="5104AD81-1654-747F-0070-4AD2858D0890">
+<createdBy>mattiv</createdBy>
+<createdTime>2023-03-14 17:36:04 UTC</createdTime>
+<ownerDesignName>Recording_Studios</ownerDesignName>
+<importedID>9F839E5C-0F50-0F0E-43D5-7E87B6385423</importedID>
+<engineerTo>
+<item key="8C94D348-E0D1-253C-A5EF-8822F3C5FCF1" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>4</dataTypePrecision>
+<ownDataTypeParameters>,4,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="name" id="2CD54674-63B8-69EA-0C07-CA76B6603994">
+<createdBy>mattiv</createdBy>
+<createdTime>2023-03-14 17:36:04 UTC</createdTime>
+<ownerDesignName>Recording_Studios</ownerDesignName>
+<importedID>D554AC51-E889-D89E-A2A4-9ED22E54563A</importedID>
+<engineerTo>
+<item key="8C94D348-E0D1-253C-A5EF-8822F3C5FCF1" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50 CHAR</dataTypeSize>
+<ownDataTypeParameters>50 CHAR,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="music_genre" id="43E95DEB-EF5D-0CB8-4DE9-2130A3724142">
+<createdBy>mattiv</createdBy>
+<createdTime>2023-03-14 17:36:04 UTC</createdTime>
+<ownerDesignName>Recording_Studios</ownerDesignName>
+<importedID>3E0EE9CF-B2F5-4EAA-A460-BD1FF1384E4F</importedID>
+<engineerTo>
+<item key="8C94D348-E0D1-253C-A5EF-8822F3C5FCF1" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30 CHAR</dataTypeSize>
+<ownDataTypeParameters>30 CHAR,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="profession" id="8E18CBA3-AB6A-72AC-ED3B-08BD9BE8F35D">
+<createdBy>mattiv</createdBy>
+<createdTime>2023-03-14 17:36:04 UTC</createdTime>
+<ownerDesignName>Recording_Studios</ownerDesignName>
+<importedID>5BA401ED-8A04-723D-0E5E-A1FE13CFCC19</importedID>
+<engineerTo>
+<item key="8C94D348-E0D1-253C-A5EF-8822F3C5FCF1" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50 CHAR</dataTypeSize>
+<ownDataTypeParameters>50 CHAR,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="birth_date" id="741E211B-4C53-105F-FABF-CD0161833A49">
+<createdBy>mattiv</createdBy>
+<createdTime>2023-03-14 17:36:04 UTC</createdTime>
+<ownerDesignName>Recording_Studios</ownerDesignName>
+<importedID>B59393AA-6566-5C85-926E-1B57F35E0A22</importedID>
+<engineerTo>
+<item key="8C94D348-E0D1-253C-A5EF-8822F3C5FCF1" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="phone_artist" id="D5B6544E-6B1B-0C0A-FCF7-C9FD0C1429B0">
+<createdBy>mattiv</createdBy>
+<createdTime>2023-03-14 17:36:04 UTC</createdTime>
+<ownerDesignName>Recording_Studios</ownerDesignName>
+<importedID>D42CC418-7B8F-D9EE-3253-C351980BF2A5</importedID>
+<engineerTo>
+<item key="8C94D348-E0D1-253C-A5EF-8822F3C5FCF1" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="email_artist" id="146AAD41-EFE8-B6EE-5D53-D004ED3274EB">
+<createdBy>mattiv</createdBy>
+<createdTime>2023-03-14 17:36:04 UTC</createdTime>
+<ownerDesignName>Recording_Studios</ownerDesignName>
+<importedID>85B15CB5-0001-F7DC-1BAB-B6FDE4D78CA1</importedID>
+<engineerTo>
+<item key="8C94D348-E0D1-253C-A5EF-8822F3C5FCF1" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50 CHAR</dataTypeSize>
+<ownDataTypeParameters>50 CHAR,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="8C9092AB-F51D-F9A6-DFA7-6CC11B846948" name="Artists PK">
+<createdBy>mattiv</createdBy>
+<createdTime>2023-03-14 17:36:04 UTC</createdTime>
+<ownerDesignName>Recording_Studios</ownerDesignName>
+<engineerTo>
+<item key="8C94D348-E0D1-253C-A5EF-8822F3C5FCF1" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>5104AD81-1654-747F-0070-4AD2858D0890</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

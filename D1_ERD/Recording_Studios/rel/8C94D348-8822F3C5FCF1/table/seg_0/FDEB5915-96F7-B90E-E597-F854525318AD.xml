@@ -1,0 +1,77 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="FDEB5915-96F7-B90E-E597-F854525318AD" name="Artists_RecStudios_Relation">
+<createdBy>mattiv</createdBy>
+<createdTime>2023-03-16 20:15:36 UTC</createdTime>
+<ownerDesignName>Recording_Studios</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="A_artist_id" id="657F149F-48C8-8D0C-23E7-AF0B616DF2D3">
+<createdBy>mattiv</createdBy>
+<createdTime>2023-03-16 20:15:36 UTC</createdTime>
+<ownerDesignName>Recording_Studios</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>4</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="5F00A837-2A3C-9561-8AC6-7E49137E4034" referredColumn="05D3F454-8945-0061-FF90-B9BB9101AF5B"/>
+</associations>
+</Column>
+<Column name="RS_studio_code" id="C8BD01C1-C3C5-C1F3-969B-AC6EA54C2C93">
+<createdBy>mattiv</createdBy>
+<createdTime>2023-03-16 20:15:36 UTC</createdTime>
+<ownerDesignName>Recording_Studios</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>4 CHAR</dataTypeSize>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="F34041E1-E55E-C68E-D20E-483C648046FC" referredColumn="762498B2-BE73-7A39-5381-9A1F34B6C59A"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="6632C02A-9A4B-A055-6BCD-03CA016FE56F" name="Artists_RecStudios_Relation_PK">
+<createdBy>mattiv</createdBy>
+<createdTime>2023-03-16 20:15:36 UTC</createdTime>
+<ownerDesignName>Recording_Studios</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="657F149F-48C8-8D0C-23E7-AF0B616DF2D3"/>
+<colUsage columnID="C8BD01C1-C3C5-C1F3-969B-AC6EA54C2C93"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="0C0D14C9-6A83-D4F7-7D11-697DF419972B" name="Artists_RecStudios_Relation_Artists_FK">
+<createdBy>mattiv</createdBy>
+<createdTime>2023-03-16 20:15:36 UTC</createdTime>
+<generatorID>FA962FE1-8F25-9B78-49AE-4B984DB56C21</generatorID>
+<ownerDesignName>Recording_Studios</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="657F149F-48C8-8D0C-23E7-AF0B616DF2D3"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="1E82038A-A186-1251-7FCA-59C80E3DA810" name="Artists_RecStudios_Relation_Recording_Studios_FK">
+<createdBy>mattiv</createdBy>
+<createdTime>2023-03-16 20:15:36 UTC</createdTime>
+<generatorID>FA962FE1-8F25-9B78-49AE-4B984DB56C21</generatorID>
+<ownerDesignName>Recording_Studios</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="C8BD01C1-C3C5-C1F3-969B-AC6EA54C2C93"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

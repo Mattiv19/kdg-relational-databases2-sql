@@ -1,0 +1,20 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="Artists_Bookings_Relation" directorySegmentName="seg_0" id="AA3DECA9-79EB-DA12-A9CC-986448FE00EE">
+<createdBy>mattiv</createdBy>
+<createdTime>2023-03-15 18:04:19 UTC</createdTime>
+<ownerDesignName>Recording_Studios</ownerDesignName>
+<engineerTo>
+<item key="8C94D348-E0D1-253C-A5EF-8822F3C5FCF1" value="true"/>
+</engineerTo>
+<sourcePk>8C9092AB-F51D-F9A6-DFA7-6CC11B846948</sourcePk>
+<targetPk>09B12D8F-B227-2207-C4F1-63261737B0BD</targetPk>
+<identifying>false</identifying>
+<optionalSource>true</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>607197D9-911F-A6F7-9FC3-ED1F1A6887E7</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>7E8C41D5-014E-F702-6D0C-C18260E7B103</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

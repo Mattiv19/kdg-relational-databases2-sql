@@ -1,0 +1,18 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="Artists_RecStudios_Relation" directorySegmentName="seg_0" id="FA962FE1-8F25-9B78-49AE-4B984DB56C21">
+<createdBy>mattiv</createdBy>
+<createdTime>2023-03-15 17:08:18 UTC</createdTime>
+<ownerDesignName>Recording_Studios</ownerDesignName>
+<engineerTo>
+<item key="8C94D348-E0D1-253C-A5EF-8822F3C5FCF1" value="true"/>
+</engineerTo>
+<identifying>false</identifying>
+<optionalSource>true</optionalSource>
+<optionalTarget>true</optionalTarget>
+<sourceCardinality>*</sourceCardinality>
+<sourceEntity>607197D9-911F-A6F7-9FC3-ED1F1A6887E7</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>BC3870B8-66F1-C630-4DDE-5CD3676EECB1</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

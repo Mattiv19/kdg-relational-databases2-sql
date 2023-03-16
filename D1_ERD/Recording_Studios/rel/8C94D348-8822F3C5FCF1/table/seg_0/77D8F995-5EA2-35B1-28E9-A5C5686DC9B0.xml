@@ -1,0 +1,165 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="77D8F995-5EA2-35B1-28E9-A5C5686DC9B0" name="Rooms">
+<createdBy>mattiv</createdBy>
+<createdTime>2023-03-16 20:15:36 UTC</createdTime>
+<generatorID>1CDB93CE-DD4C-19F3-BCD5-9DBA48E47907</generatorID>
+<ownerDesignName>Recording_Studios</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="room_code" id="A0A2C7EA-AB65-FFA1-5102-42A258F65FF9">
+<createdBy>mattiv</createdBy>
+<createdTime>2023-03-16 20:15:36 UTC</createdTime>
+<generatorID>7FC11DE5-30DF-A1D6-2AA9-DD3BF31646EE</generatorID>
+<ownerDesignName>Recording_Studios</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>6 CHAR</dataTypeSize>
+<ownDataTypeParameters>6 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="room_name" id="08571B3F-1D4F-917A-6B38-4C31BE253E68">
+<createdBy>mattiv</createdBy>
+<createdTime>2023-03-16 20:15:36 UTC</createdTime>
+<generatorID>7530027B-E4F5-350C-52B6-204BA48CF825</generatorID>
+<ownerDesignName>Recording_Studios</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="area_insqm" id="932A4877-B615-8907-69DC-B95F25EE1D03">
+<createdBy>mattiv</createdBy>
+<createdTime>2023-03-16 20:15:36 UTC</createdTime>
+<commentInRDBMS><![CDATA[Area in square meters]]></commentInRDBMS>
+<generatorID>1739ECB8-D820-FF02-D0DE-797617BD0FD5</generatorID>
+<ownerDesignName>Recording_Studios</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
+<dataTypeScale>2</dataTypeScale>
+<ownDataTypeParameters>,5,2</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<listOfRanges>
+<rangeDef class="oracle.dbtools.crest.model.design.constraint.AVT">
+<beginValue>1</beginValue>
+<endValue>500</endValue>
+</rangeDef>
+</listOfRanges>
+</Column>
+<Column name="costperhour" id="B379072F-0893-16AF-B288-DA9AF7E11FB9">
+<createdBy>mattiv</createdBy>
+<createdTime>2023-03-16 20:15:36 UTC</createdTime>
+<generatorID>A1A4C59A-B5BD-F090-21E3-CE84E0CA968F</generatorID>
+<ownerDesignName>Recording_Studios</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>3</dataTypePrecision>
+<ownDataTypeParameters>,3,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<listOfRanges>
+<rangeDef class="oracle.dbtools.crest.model.design.constraint.AVT">
+<beginValue>1</beginValue>
+<endValue>200</endValue>
+</rangeDef>
+</listOfRanges>
+</Column>
+<Column name="singer_booth" id="71BD3A07-7BD5-4E39-9B08-D9F8861A4415">
+<createdBy>mattiv</createdBy>
+<createdTime>2023-03-16 20:15:36 UTC</createdTime>
+<generatorID>6E86ECAE-C26B-47AC-4137-2BA6A790319C</generatorID>
+<ownerDesignName>Recording_Studios</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT006</logicalDatatype>
+<listOfValues>
+<valueDef value="N" description="False"/>
+<valueDef value="Y" description="True"/>
+</listOfValues>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="instr_rec_booth" id="F461B5EB-6D04-D729-A48A-FF0D42287B6D">
+<createdBy>mattiv</createdBy>
+<createdTime>2023-03-16 20:15:36 UTC</createdTime>
+<generatorID>EB46D88E-AF65-6983-2D55-F2E695F25C67</generatorID>
+<ownerDesignName>Recording_Studios</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT006</logicalDatatype>
+<listOfValues>
+<valueDef value="N" description="False"/>
+<valueDef value="Y" description="True"/>
+</listOfValues>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Recording_Studios_studio_code" id="69094046-57CD-B3B7-78B5-E058321A8D3F">
+<createdBy>mattiv</createdBy>
+<createdTime>2023-03-16 20:15:36 UTC</createdTime>
+<generatorID>CDA8645A-5337-E12E-03F0-6E7B6EE9D4CB</generatorID>
+<ownerDesignName>Recording_Studios</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>4 CHAR</dataTypeSize>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="5C1CA1AF-24EE-C927-E548-515C1C7115C2" referredColumn="762498B2-BE73-7A39-5381-9A1F34B6C59A"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="763CC9C3-54DB-7DB8-2713-81B01D35929A" name="Rooms_PK">
+<createdBy>mattiv</createdBy>
+<createdTime>2023-03-16 20:15:36 UTC</createdTime>
+<generatorID>A9B47F79-BDCC-6F06-4341-B3C7A4BD0DCC</generatorID>
+<ownerDesignName>Recording_Studios</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="A0A2C7EA-AB65-FFA1-5102-42A258F65FF9"/>
+<colUsage columnID="69094046-57CD-B3B7-78B5-E058321A8D3F"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="C25C4ED3-246C-65F6-454C-DCCECFEE2658" name="Rooms_Recording_Studios_FK">
+<createdBy>mattiv</createdBy>
+<createdTime>2023-03-16 20:15:36 UTC</createdTime>
+<generatorID>A4CF1E89-E441-2C33-67DD-828D42673B4C</generatorID>
+<ownerDesignName>Recording_Studios</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="69094046-57CD-B3B7-78B5-E058321A8D3F"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+<tableCheckConstraints itemClass="oracle.dbtools.crest.model.design.constraint.TableLevelConstraint">
+<tableCheckConstraint name="Rooms_CK_1" directorySegmentName="seg_0" id="0373DF56-25C2-5C72-1AEE-A621B9A2554A">
+<createdBy>mattiv</createdBy>
+<createdTime>2023-03-16 20:53:00 UTC</createdTime>
+<ownerDesignName>Recording_Studios</ownerDesignName>
+<rule><![CDATA[area_insqm < 500]]></rule>
+</tableCheckConstraint>
+<tableCheckConstraint name="Rooms_CK_2" directorySegmentName="seg_0" id="401D8D9D-C91E-66BA-351A-DC710AB56E3F">
+<createdBy>mattiv</createdBy>
+<createdTime>2023-03-16 20:53:00 UTC</createdTime>
+<ownerDesignName>Recording_Studios</ownerDesignName>
+<rule><![CDATA[costperhour < 200]]></rule>
+</tableCheckConstraint>
+</tableCheckConstraints>
+</Table>

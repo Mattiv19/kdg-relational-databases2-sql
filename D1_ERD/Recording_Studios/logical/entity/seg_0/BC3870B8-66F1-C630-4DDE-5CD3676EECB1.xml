@@ -1,0 +1,140 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="BC3870B8-66F1-C630-4DDE-5CD3676EECB1" name="Recording_Studios">
+<createdBy>mattiv</createdBy>
+<createdTime>2023-03-14 17:36:04 UTC</createdTime>
+<ownerDesignName>Recording_Studios</ownerDesignName>
+<engineerTo>
+<item key="8C94D348-E0D1-253C-A5EF-8822F3C5FCF1" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="studio_code" id="3256C3B5-1395-0168-FC6D-66FE9FCA0024">
+<createdBy>mattiv</createdBy>
+<createdTime>2023-03-14 17:36:04 UTC</createdTime>
+<ownerDesignName>Recording_Studios</ownerDesignName>
+<importedID>AE03ED9E-E9C6-F2C1-E42D-49AA21528303</importedID>
+<engineerTo>
+<item key="8C94D348-E0D1-253C-A5EF-8822F3C5FCF1" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>4 CHAR</dataTypeSize>
+<ownDataTypeParameters>4 CHAR,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="studio_name" id="5B2A1EAC-C443-162F-078B-A020F6D9D18B">
+<createdBy>mattiv</createdBy>
+<createdTime>2023-03-14 17:36:04 UTC</createdTime>
+<ownerDesignName>Recording_Studios</ownerDesignName>
+<importedID>3712DB4A-A459-A2E0-C868-3D9D917FFD31</importedID>
+<engineerTo>
+<item key="8C94D348-E0D1-253C-A5EF-8822F3C5FCF1" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30 CHAR</dataTypeSize>
+<ownDataTypeParameters>30 CHAR,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="address" id="A617DDF0-0635-A90F-52C9-E3C2FB479149">
+<createdBy>mattiv</createdBy>
+<createdTime>2023-03-14 17:36:04 UTC</createdTime>
+<ownerDesignName>Recording_Studios</ownerDesignName>
+<importedID>D39B339D-750A-D55B-1E4D-E3344495EDB9</importedID>
+<engineerTo>
+<item key="8C94D348-E0D1-253C-A5EF-8822F3C5FCF1" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>80 CHAR</dataTypeSize>
+<ownDataTypeParameters>80 CHAR,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="location" id="0782111F-3781-D9C8-695C-7850497E39DE">
+<createdBy>mattiv</createdBy>
+<createdTime>2023-03-14 17:36:04 UTC</createdTime>
+<ownerDesignName>Recording_Studios</ownerDesignName>
+<importedID>013BA0F3-78F7-AAC3-3DA8-337B83661F5E</importedID>
+<engineerTo>
+<item key="8C94D348-E0D1-253C-A5EF-8822F3C5FCF1" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50 CHAR</dataTypeSize>
+<ownDataTypeParameters>50 CHAR,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="phone_studio" id="6140D9D9-92C2-A5BD-AFC5-13ACBE602B63">
+<createdBy>mattiv</createdBy>
+<createdTime>2023-03-14 17:36:04 UTC</createdTime>
+<ownerDesignName>Recording_Studios</ownerDesignName>
+<importedID>1D8B1450-1BDC-9AA4-7183-2D98CF6F738C</importedID>
+<engineerTo>
+<item key="8C94D348-E0D1-253C-A5EF-8822F3C5FCF1" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="email_studio" id="55AC3C1E-17B9-8414-3F61-D02344A6EDB1">
+<createdBy>mattiv</createdBy>
+<createdTime>2023-03-14 17:36:04 UTC</createdTime>
+<ownerDesignName>Recording_Studios</ownerDesignName>
+<importedID>8EF98B62-6C86-9B5F-DD49-66A45AF2E1CA</importedID>
+<engineerTo>
+<item key="8C94D348-E0D1-253C-A5EF-8822F3C5FCF1" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="local_engineer" id="6B9FD142-1A3C-9CD3-86DD-E0DFAA1B4712">
+<createdBy>mattiv</createdBy>
+<createdTime>2023-03-14 17:36:04 UTC</createdTime>
+<ownerDesignName>Recording_Studios</ownerDesignName>
+<importedID>5099DD9F-2883-25A8-A794-2BC137222E54</importedID>
+<engineerTo>
+<item key="8C94D348-E0D1-253C-A5EF-8822F3C5FCF1" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT006</logicalDatatype>
+<listOfValues>
+<valueDef value="N" description="False"/>
+<valueDef value="Y" description="True"/>
+</listOfValues>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="197073A5-274C-2BCC-236D-7D17C1F61CF3" name="Recording Studios PK">
+<createdBy>mattiv</createdBy>
+<createdTime>2023-03-14 17:36:04 UTC</createdTime>
+<ownerDesignName>Recording_Studios</ownerDesignName>
+<engineerTo>
+<item key="8C94D348-E0D1-253C-A5EF-8822F3C5FCF1" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>3256C3B5-1395-0168-FC6D-66FE9FCA0024</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

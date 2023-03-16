@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<cwd_glossary name="Recording_Studios" description="generated from logical model of design Recording_Studios" id="62A42F4C-12DF-A134-7540-A590CF876C6D" incomplete_modifiers="true" >
+
+   <glossaryWord name="Artists" plural="Artists" abbreviation="" alt_abbreviation="" id="6FC826C2-99FE-B067-C885-7751DB199521" import_id="" description="" />
+   <glossaryWord name="Bookings" plural="Bookings" abbreviation="" alt_abbreviation="" id="2CD9D880-E831-9B63-5B18-C654972B0B5D" import_id="" description="" />
+   <glossaryWord name="Equipment" plural="Equipment" abbreviation="" alt_abbreviation="" id="2DD25B4C-1705-3248-96FC-D36D95D956FF" import_id="" description="" />
+   <glossaryWord name="Equipments" plural="" abbreviation="" alt_abbreviation="" id="3F3F5416-F7C8-D423-4DF8-9C30BE4A7944" import_id="" description="" />
+   <glossaryWord name="PK" plural="" abbreviation="" alt_abbreviation="" id="2B4730AA-3D0C-4EFB-C556-C76B3CE67636" import_id="" description="" />
+   <glossaryWord name="Recording" plural="" abbreviation="" alt_abbreviation="" id="05B99884-68A2-A278-04A9-385B20BE9B6E" import_id="" description="" />
+   <glossaryWord name="Recording_Studios" plural="Recording_Studios" abbreviation="" alt_abbreviation="" id="981DB6DC-2AF8-F4EB-E85E-233438E23F2C" import_id="" description="" />
+   <glossaryWord name="Rooms" plural="Rooms" abbreviation="" alt_abbreviation="" id="CD5729AA-A1FF-5EA5-F558-AC326CA90895" import_id="" description="" />
+   <glossaryWord name="Studios" plural="" abbreviation="" alt_abbreviation="" id="7B7AE2D0-D8E9-5589-409D-461C03D6D208" import_id="" description="" />
+   <glossaryWord name="address" plural="" abbreviation="" alt_abbreviation="" id="06053032-8371-3B2D-A0E4-B2FCCDDA0C6C" import_id="" description="" />
+   <glossaryWord name="area_insqm" plural="" abbreviation="" alt_abbreviation="" id="343AA8F9-A96B-1A18-E19E-A7642C27D0D5" import_id="" description="" />
+   <glossaryWord name="artist_id" plural="" abbreviation="" alt_abbreviation="" id="A5E74982-3CE8-F812-5491-EC6FFD72A073" import_id="" description="" />
+   <glossaryWord name="birth_date" plural="" abbreviation="" alt_abbreviation="" id="D12B774E-A388-4FC0-B488-83EB094C8B0A" import_id="" description="" />
+   <glossaryWord name="costperhour" plural="" abbreviation="" alt_abbreviation="" id="7B17AA7B-4A25-F37E-6C09-C6EA8639FEDE" import_id="" description="" />
+   <glossaryWord name="daw" plural="" abbreviation="" alt_abbreviation="" id="D891FE18-9B58-363D-6558-168AC6166EC6" import_id="" description="" />
+   <glossaryWord name="email_artist" plural="" abbreviation="" alt_abbreviation="" id="4FB3FB66-658B-2E3F-652A-FF46EEC0714C" import_id="" description="" />
+   <glossaryWord name="email_studio" plural="" abbreviation="" alt_abbreviation="" id="0608FA38-6576-8AA7-5DEB-A74677D82CC0" import_id="" description="" />
+   <glossaryWord name="end_hour" plural="" abbreviation="" alt_abbreviation="" id="2CFA76B8-D57A-35A2-07E0-7FC6DB3E663B" import_id="" description="" />
+   <glossaryWord name="equipment_code" plural="" abbreviation="" alt_abbreviation="" id="302CCE29-08BD-9312-3630-722B30F64EE4" import_id="" description="" />
+   <glossaryWord name="hardware" plural="" abbreviation="" alt_abbreviation="" id="0795C86E-56DD-88A1-CD97-70D3C50E71C7" import_id="" description="" />
+   <glossaryWord name="instr_rec_booth" plural="" abbreviation="" alt_abbreviation="" id="7AE5CA30-5ABC-7430-9230-FAF98C99B7E4" import_id="" description="" />
+   <glossaryWord name="local_engineer" plural="" abbreviation="" alt_abbreviation="" id="C0DC44ED-4875-C16C-A9C2-DE8DD296FD60" import_id="" description="" />
+   <glossaryWord name="location" plural="" abbreviation="" alt_abbreviation="" id="D459B6AD-DC3C-21FD-6A68-F3E8C7553C7B" import_id="" description="" />
+   <glossaryWord name="mixing_console" plural="" abbreviation="" alt_abbreviation="" id="E1885ED1-C1C8-81CA-92EE-F9640B3C5C81" import_id="" description="" />
+   <glossaryWord name="monitors" plural="" abbreviation="" alt_abbreviation="" id="0CDD150F-D2FE-237D-4915-BC0532EECA1E" import_id="" description="" />
+   <glossaryWord name="music_genre" plural="" abbreviation="" alt_abbreviation="" id="B069DA66-7ED7-65DC-838B-979ABC132D2B" import_id="" description="" />
+   <glossaryWord name="name" plural="" abbreviation="" alt_abbreviation="" id="541962AF-E7C3-5A0E-BF49-5E495372B75A" import_id="" description="" />
+   <glossaryWord name="phone_artist" plural="" abbreviation="" alt_abbreviation="" id="B8A4B303-D956-784B-2B03-AE6E21397F3C" import_id="" description="" />
+   <glossaryWord name="phone_studio" plural="" abbreviation="" alt_abbreviation="" id="C6F921F9-ABD8-226B-69D2-771094704E0D" import_id="" description="" />
+   <glossaryWord name="profession" plural="" abbreviation="" alt_abbreviation="" id="86AF752F-86AB-280D-3B48-65A02B0E1ABF" import_id="" description="" />
+   <glossaryWord name="res_code" plural="" abbreviation="" alt_abbreviation="" id="C9BE5372-1703-01D3-9A41-9470C0017B7D" import_id="" description="" />
+   <glossaryWord name="res_date" plural="" abbreviation="" alt_abbreviation="" id="3C342A06-2FB4-80FC-C337-BB90DFC79A18" import_id="" description="" />
+   <glossaryWord name="room_code" plural="" abbreviation="" alt_abbreviation="" id="623CE778-5893-83E5-0DBA-DD9B087633DB" import_id="" description="" />
+   <glossaryWord name="room_name" plural="" abbreviation="" alt_abbreviation="" id="23871BF5-7D3D-A2BD-0FC7-9C6F8F04CD37" import_id="" description="" />
+   <glossaryWord name="singer_booth" plural="" abbreviation="" alt_abbreviation="" id="AA0C32DF-B299-101A-890E-8273DBCF992C" import_id="" description="" />
+   <glossaryWord name="software" plural="" abbreviation="" alt_abbreviation="" id="A0A85CC2-DAFE-2C1F-B2E7-E2F82D07D355" import_id="" description="" />
+   <glossaryWord name="start_hour" plural="" abbreviation="" alt_abbreviation="" id="31C4C306-D53C-C509-B2AF-B1B16BC13DF5" import_id="" description="" />
+   <glossaryWord name="studio_code" plural="" abbreviation="" alt_abbreviation="" id="8DBBA2A0-DC07-31DB-31FB-F360003F0E1C" import_id="" description="" />
+   <glossaryWord name="studio_name" plural="" abbreviation="" alt_abbreviation="" id="59FBC657-B814-6EA0-39C4-4AFA580B7C11" import_id="" description="" />
+   <glossaryWord name="synths" plural="" abbreviation="" alt_abbreviation="" id="6702D86A-A54E-1F82-CB59-C5AF52364D55" import_id="" description="" />
+   <glossaryWord name="vocal_mic" plural="" abbreviation="" alt_abbreviation="" id="CF225CC0-C865-7E27-8A86-F7679D23448A" import_id="" description="" />
+
+</cwd_glossary>

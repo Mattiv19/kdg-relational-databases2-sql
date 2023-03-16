@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="Room_Equipment_Relation" directorySegmentName="seg_0" id="D9ECD153-5D99-9933-DD1D-6491C271D9FA">
+<createdBy>mattiv</createdBy>
+<createdTime>2023-03-14 18:46:23 UTC</createdTime>
+<ownerDesignName>Recording_Studios</ownerDesignName>
+<engineerTo>
+<item key="8C94D348-E0D1-253C-A5EF-8822F3C5FCF1" value="true"/>
+</engineerTo>
+<sourcePk>A9B47F79-BDCC-6F06-4341-B3C7A4BD0DCC</sourcePk>
+<identifying>true</identifying>
+<optionalSource>false</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>1CDB93CE-DD4C-19F3-BCD5-9DBA48E47907</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>58330243-B392-B0B2-6933-F5B7DEB08126</targetEntity>
+<transferable>true</transferable>
+<deleteRule>CASCADE</deleteRule>
+</Relation>

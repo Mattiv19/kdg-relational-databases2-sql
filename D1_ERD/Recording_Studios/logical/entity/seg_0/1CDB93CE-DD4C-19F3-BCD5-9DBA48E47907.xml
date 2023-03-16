@@ -1,0 +1,158 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="1CDB93CE-DD4C-19F3-BCD5-9DBA48E47907" name="Rooms">
+<createdBy>mattiv</createdBy>
+<createdTime>2023-03-14 17:36:04 UTC</createdTime>
+<ownerDesignName>Recording_Studios</ownerDesignName>
+<engineerTo>
+<item key="8C94D348-E0D1-253C-A5EF-8822F3C5FCF1" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="room_code" id="7FC11DE5-30DF-A1D6-2AA9-DD3BF31646EE">
+<createdBy>mattiv</createdBy>
+<createdTime>2023-03-14 17:36:04 UTC</createdTime>
+<ownerDesignName>Recording_Studios</ownerDesignName>
+<importedID>0A8EA20C-B13F-C943-F130-E605B2C9E1B4</importedID>
+<engineerTo>
+<item key="8C94D348-E0D1-253C-A5EF-8822F3C5FCF1" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>6 CHAR</dataTypeSize>
+<ownDataTypeParameters>6 CHAR,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="room_name" id="7530027B-E4F5-350C-52B6-204BA48CF825">
+<createdBy>mattiv</createdBy>
+<createdTime>2023-03-14 17:36:04 UTC</createdTime>
+<ownerDesignName>Recording_Studios</ownerDesignName>
+<importedID>AAAA5F54-080F-15EA-0D15-E30175CEAD82</importedID>
+<engineerTo>
+<item key="8C94D348-E0D1-253C-A5EF-8822F3C5FCF1" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="area_insqm" id="1739ECB8-D820-FF02-D0DE-797617BD0FD5">
+<createdBy>mattiv</createdBy>
+<createdTime>2023-03-14 17:36:04 UTC</createdTime>
+<commentInRDBMS><![CDATA[Area in square meters]]></commentInRDBMS>
+<ownerDesignName>Recording_Studios</ownerDesignName>
+<importedID>CBFC970E-D13D-5C63-E725-AC04056A184C</importedID>
+<engineerTo>
+<item key="8C94D348-E0D1-253C-A5EF-8822F3C5FCF1" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
+<dataTypeScale>2</dataTypeScale>
+<ownDataTypeParameters>,5,2</ownDataTypeParameters>
+<listOfRanges>
+<rangeDef class="oracle.dbtools.crest.model.design.constraint.AVT">
+<beginValue>1</beginValue>
+<endValue>500</endValue>
+</rangeDef>
+</listOfRanges>
+</Attribute>
+<Attribute name="costperhour" id="A1A4C59A-B5BD-F090-21E3-CE84E0CA968F">
+<createdBy>mattiv</createdBy>
+<createdTime>2023-03-14 17:36:04 UTC</createdTime>
+<ownerDesignName>Recording_Studios</ownerDesignName>
+<importedID>BDD17F2F-DD10-1D12-3A9E-DB47F82E9F08</importedID>
+<engineerTo>
+<item key="8C94D348-E0D1-253C-A5EF-8822F3C5FCF1" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>3</dataTypePrecision>
+<ownDataTypeParameters>,3,</ownDataTypeParameters>
+<listOfRanges>
+<rangeDef class="oracle.dbtools.crest.model.design.constraint.AVT">
+<beginValue>1</beginValue>
+<endValue>200</endValue>
+</rangeDef>
+</listOfRanges>
+</Attribute>
+<Attribute name="singer_booth" id="6E86ECAE-C26B-47AC-4137-2BA6A790319C">
+<createdBy>mattiv</createdBy>
+<createdTime>2023-03-14 17:36:04 UTC</createdTime>
+<ownerDesignName>Recording_Studios</ownerDesignName>
+<importedID>7D35C1F7-AFC0-6327-B40A-F51B53DF83E0</importedID>
+<engineerTo>
+<item key="8C94D348-E0D1-253C-A5EF-8822F3C5FCF1" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT006</logicalDatatype>
+<listOfValues>
+<valueDef value="N" description="False"/>
+<valueDef value="Y" description="True"/>
+</listOfValues>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="instr_rec_booth" id="EB46D88E-AF65-6983-2D55-F2E695F25C67">
+<createdBy>mattiv</createdBy>
+<createdTime>2023-03-14 17:36:04 UTC</createdTime>
+<ownerDesignName>Recording_Studios</ownerDesignName>
+<importedID>8820427E-A6CD-871C-BA00-2EF221DCACDC</importedID>
+<engineerTo>
+<item key="8C94D348-E0D1-253C-A5EF-8822F3C5FCF1" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT006</logicalDatatype>
+<listOfValues>
+<valueDef value="N" description="False"/>
+<valueDef value="Y" description="True"/>
+</listOfValues>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="studio_code" id="CDA8645A-5337-E12E-03F0-6E7B6EE9D4CB">
+<createdBy>mattiv</createdBy>
+<createdTime>2023-03-14 18:44:39 UTC</createdTime>
+<generatorID>A4CF1E89-E441-2C33-67DD-828D42673B4C</generatorID>
+<ownerDesignName>Recording_Studios</ownerDesignName>
+<engineerTo>
+<item key="8C94D348-E0D1-253C-A5EF-8822F3C5FCF1" value="true"/>
+</engineerTo>
+<referedAttribute>3256C3B5-1395-0168-FC6D-66FE9FCA0024</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>4 CHAR</dataTypeSize>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="A9B47F79-BDCC-6F06-4341-B3C7A4BD0DCC" name="Rooms PK">
+<createdBy>mattiv</createdBy>
+<createdTime>2023-03-14 17:36:04 UTC</createdTime>
+<ownerDesignName>Recording_Studios</ownerDesignName>
+<engineerTo>
+<item key="8C94D348-E0D1-253C-A5EF-8822F3C5FCF1" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>7FC11DE5-30DF-A1D6-2AA9-DD3BF31646EE</attributeRef>
+<attributeRef>CDA8645A-5337-E12E-03F0-6E7B6EE9D4CB</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

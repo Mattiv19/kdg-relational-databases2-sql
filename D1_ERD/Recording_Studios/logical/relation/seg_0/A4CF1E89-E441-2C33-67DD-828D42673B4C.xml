@@ -1,0 +1,20 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="RecStudio_Rooms_Relation" directorySegmentName="seg_0" id="A4CF1E89-E441-2C33-67DD-828D42673B4C">
+<createdBy>mattiv</createdBy>
+<createdTime>2023-03-14 18:44:28 UTC</createdTime>
+<ownerDesignName>Recording_Studios</ownerDesignName>
+<engineerTo>
+<item key="8C94D348-E0D1-253C-A5EF-8822F3C5FCF1" value="true"/>
+</engineerTo>
+<sourcePk>197073A5-274C-2BCC-236D-7D17C1F61CF3</sourcePk>
+<targetPk>A9B47F79-BDCC-6F06-4341-B3C7A4BD0DCC</targetPk>
+<identifying>true</identifying>
+<optionalSource>false</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>BC3870B8-66F1-C630-4DDE-5CD3676EECB1</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>1CDB93CE-DD4C-19F3-BCD5-9DBA48E47907</targetEntity>
+<transferable>true</transferable>
+<deleteRule>CASCADE</deleteRule>
+</Relation>

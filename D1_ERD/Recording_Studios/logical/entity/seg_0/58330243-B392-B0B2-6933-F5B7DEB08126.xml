@@ -1,0 +1,209 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="58330243-B392-B0B2-6933-F5B7DEB08126" name="Equipment">
+<createdBy>mattiv</createdBy>
+<createdTime>2023-03-14 17:36:04 UTC</createdTime>
+<ownerDesignName>Recording_Studios</ownerDesignName>
+<engineerTo>
+<item key="8C94D348-E0D1-253C-A5EF-8822F3C5FCF1" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="equipment_code" id="1B20447B-7F07-9AB2-35F5-4B76485231F6">
+<createdBy>mattiv</createdBy>
+<createdTime>2023-03-14 17:36:04 UTC</createdTime>
+<ownerDesignName>Recording_Studios</ownerDesignName>
+<importedID>4DE87E5F-BD5C-0F0D-11E2-82529102ECF2</importedID>
+<engineerTo>
+<item key="8C94D348-E0D1-253C-A5EF-8822F3C5FCF1" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
+<ownDataTypeParameters>,5,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="mixing_console" id="7654B256-10F3-54F1-0865-F548C825FCE0">
+<createdBy>mattiv</createdBy>
+<createdTime>2023-03-14 17:36:04 UTC</createdTime>
+<ownerDesignName>Recording_Studios</ownerDesignName>
+<importedID>BCA5EF66-FD0F-8875-C6D1-EDE7A24B2EC9</importedID>
+<engineerTo>
+<item key="8C94D348-E0D1-253C-A5EF-8822F3C5FCF1" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>4 CHAR</dataTypeSize>
+<listOfValues>
+<valueDef value="API" description="API Console"/>
+<valueDef value="AVID" description="AVID Console"/>
+<valueDef value="NEVE" description="Neve Console"/>
+<valueDef value="SSL" description="SSL Console"/>
+</listOfValues>
+<ownDataTypeParameters>4 CHAR,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="monitors" id="3BBC7244-2086-1B33-0BA4-942E6C34D37E">
+<createdBy>mattiv</createdBy>
+<createdTime>2023-03-14 17:36:04 UTC</createdTime>
+<ownerDesignName>Recording_Studios</ownerDesignName>
+<importedID>BC6CD6FC-9586-E2E6-8090-0384B2E62EED</importedID>
+<engineerTo>
+<item key="8C94D348-E0D1-253C-A5EF-8822F3C5FCF1" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>10 CHAR</dataTypeSize>
+<listOfValues>
+<valueDef value="Adam" description=""/>
+<valueDef value="Barefoot" description=""/>
+<valueDef value="Dynaudio" description=""/>
+<valueDef value="Focal" description=""/>
+<valueDef value="Genelec" description=""/>
+</listOfValues>
+<ownDataTypeParameters>10 CHAR,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="hardware" id="C1B9C1B3-57C0-9B4D-D37B-A7C861884C0C">
+<createdBy>mattiv</createdBy>
+<createdTime>2023-03-14 17:36:04 UTC</createdTime>
+<ownerDesignName>Recording_Studios</ownerDesignName>
+<importedID>1A47A2CA-1292-C5A9-AA49-30FD031940C9</importedID>
+<engineerTo>
+<item key="8C94D348-E0D1-253C-A5EF-8822F3C5FCF1" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="daw" id="B4B46FF9-BFF3-A850-8478-4DC2A35A46F9">
+<createdBy>mattiv</createdBy>
+<createdTime>2023-03-14 17:36:04 UTC</createdTime>
+<ownerDesignName>Recording_Studios</ownerDesignName>
+<importedID>D4845948-66EE-E897-9FA7-81ACEF1D2318</importedID>
+<engineerTo>
+<item key="8C94D348-E0D1-253C-A5EF-8822F3C5FCF1" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>10 CHAR</dataTypeSize>
+<listOfValues>
+<valueDef value="Ableton" description=""/>
+<valueDef value="Cubase" description=""/>
+<valueDef value="Logic" description=""/>
+<valueDef value="ProTools" description=""/>
+</listOfValues>
+<ownDataTypeParameters>10 CHAR,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="software" id="1CAB0FB9-8880-8E7F-476D-F3CADE832975">
+<createdBy>mattiv</createdBy>
+<createdTime>2023-03-14 17:36:04 UTC</createdTime>
+<ownerDesignName>Recording_Studios</ownerDesignName>
+<importedID>8192DEDA-DB2E-6E8A-B075-2C3744B11294</importedID>
+<engineerTo>
+<item key="8C94D348-E0D1-253C-A5EF-8822F3C5FCF1" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50 CHAR</dataTypeSize>
+<ownDataTypeParameters>50 CHAR,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="synths" id="5BC94A46-2BBA-F6A2-FCC4-22B18076435D">
+<createdBy>mattiv</createdBy>
+<createdTime>2023-03-14 17:36:04 UTC</createdTime>
+<ownerDesignName>Recording_Studios</ownerDesignName>
+<importedID>A4F65750-4D45-8E17-BA33-8B91A0629352</importedID>
+<engineerTo>
+<item key="8C94D348-E0D1-253C-A5EF-8822F3C5FCF1" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50 CHAR</dataTypeSize>
+<ownDataTypeParameters>50 CHAR,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="vocal_mic" id="B8499759-57CB-0527-02E7-7B26D972A8D6">
+<createdBy>mattiv</createdBy>
+<createdTime>2023-03-14 17:36:04 UTC</createdTime>
+<ownerDesignName>Recording_Studios</ownerDesignName>
+<importedID>EAE3D536-706A-BCA6-EF40-1DFE1723B535</importedID>
+<engineerTo>
+<item key="8C94D348-E0D1-253C-A5EF-8822F3C5FCF1" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>10</dataTypeSize>
+<listOfValues>
+<valueDef value="AKG" description=""/>
+<valueDef value="Neumann" description=""/>
+<valueDef value="Shure" description=""/>
+<valueDef value="Sony" description=""/>
+</listOfValues>
+<ownDataTypeParameters>10,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="room_code" id="45D8C9D3-8E86-1561-2EBB-BF044691DD6B">
+<createdBy>mattiv</createdBy>
+<createdTime>2023-03-14 18:46:23 UTC</createdTime>
+<generatorID>D9ECD153-5D99-9933-DD1D-6491C271D9FA</generatorID>
+<ownerDesignName>Recording_Studios</ownerDesignName>
+<engineerTo>
+<item key="8C94D348-E0D1-253C-A5EF-8822F3C5FCF1" value="true"/>
+</engineerTo>
+<referedAttribute>7FC11DE5-30DF-A1D6-2AA9-DD3BF31646EE</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>6 CHAR</dataTypeSize>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="studio_code" id="C7273FDE-D70E-B169-D576-39F7C4E350CA">
+<createdBy>mattiv</createdBy>
+<createdTime>2023-03-14 18:46:23 UTC</createdTime>
+<generatorID>D9ECD153-5D99-9933-DD1D-6491C271D9FA</generatorID>
+<ownerDesignName>Recording_Studios</ownerDesignName>
+<engineerTo>
+<item key="8C94D348-E0D1-253C-A5EF-8822F3C5FCF1" value="true"/>
+</engineerTo>
+<referedAttribute>CDA8645A-5337-E12E-03F0-6E7B6EE9D4CB</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>4 CHAR</dataTypeSize>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="2D6C4F1D-E916-79F0-0BDA-7C63AB0F4A91" name="Equipments PK">
+<createdBy>mattiv</createdBy>
+<createdTime>2023-03-14 17:36:04 UTC</createdTime>
+<ownerDesignName>Recording_Studios</ownerDesignName>
+<engineerTo>
+<item key="8C94D348-E0D1-253C-A5EF-8822F3C5FCF1" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>1B20447B-7F07-9AB2-35F5-4B76485231F6</attributeRef>
+<attributeRef>45D8C9D3-8E86-1561-2EBB-BF044691DD6B</attributeRef>
+<attributeRef>C7273FDE-D70E-B169-D576-39F7C4E350CA</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="5C1CA1AF-24EE-C927-E548-515C1C7115C2" containerWithKeyObject="77D8F995-5EA2-35B1-28E9-A5C5686DC9B0" localFKIndex="C25C4ED3-246C-65F6-454C-DCCECFEE2658" name="Rooms_Recording_Studios_FK">
+<createdBy>mattiv</createdBy>
+<createdTime>2023-03-16 20:15:36 UTC</createdTime>
+<generatorID>A4CF1E89-E441-2C33-67DD-828D42673B4C</generatorID>
+<ownerDesignName>Recording_Studios</ownerDesignName>
+<referredTableLongName>Recording_Studios</referredTableLongName>
+<deleteRule>CASCADE</deleteRule>
+<referredTableID>13D8487F-0750-8CDE-CD03-E2398F06F95F</referredTableID>
+<keyObject>085B827F-B869-D5C2-31E6-074FC4840E8D</keyObject>
+<referredKeyID>085B827F-B869-D5C2-31E6-074FC4840E8D</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>studio_code</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

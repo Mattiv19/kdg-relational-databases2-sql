@@ -1,0 +1,8 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<OSDM_Design class="oracle.dbtools.crest.model.design.Design" name="Recording_Studios" id="B663B693-C1B8-FCB9-0E57-B7B436D36D0C" version="3.5">
+<createdBy>mattiv</createdBy>
+<createdTime>2023-03-14 17:35:38 UTC</createdTime>
+<ownerDesignName>Recording_Studios</ownerDesignName>
+<capitalNames>false</capitalNames>
+<designId>B663B693-C1B8-FCB9-0E57-B7B436D36D0C</designId>
+</OSDM_Design>
