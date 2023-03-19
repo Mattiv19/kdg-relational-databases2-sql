@@ -54,10 +54,7 @@ Logisch Model
 
 Verschillen na Normalisatie
 ---
-- Extra entiteit: Zipcodes
-- Extra entities: Countries
-- Tabel player_locations heeft gewijzigde samengestelde sleutel omdat je als speler bijvoorbeeld verschillende huureigendommen kunt hebben.
-  - PK: (Player_id, location_id, startdatum)
+- momenteel geen?
 
 ![Finaal Model](Finaal_ERD_M2.png)
 
