@@ -54,7 +54,7 @@ Logisch Model
 
 Verschillen na Normalisatie
 ---
-- momenteel geen?
+- Er zijn geen verschillen tussen het logisch model en de normalisatie
 
 ![Finaal Model](Finaal_ERD_M2.png)
 
