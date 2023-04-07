@@ -88,11 +88,10 @@ CREATE TABLE recording_studios (
     location       VARCHAR2(50 CHAR),
     phone_studio   NUMBER(10),
     email_studio   VARCHAR2(50),
-    local_engineer NUMBER
+    local_engineer NUMBER(1)
 );
 
-ALTER TABLE recording_studios
-    ADD CHECK ( local_engineer IN ( 'N', 'Y' ) );
+ALTER TABLE recording_studios ADD CHECK ( local_engineer IN ( 0, 1) );
 
 ALTER TABLE recording_studios
     ADD CONSTRAINT recording_studios_ck_1 CHECK ( location = upper(location) );
@@ -106,8 +105,8 @@ CREATE TABLE rooms (
     room_name                     VARCHAR2(20),
     area_insqm                    NUMBER(5, 2),
     costperhour                   NUMBER(3),
-    singer_booth                  NUMBER,
-    instr_rec_booth               NUMBER,
+    singer_booth                  NUMBER(1),
+    instr_rec_booth               NUMBER(1),
     recording_studios_studio_code INTEGER NOT NULL
 );
 
@@ -116,10 +115,10 @@ ALTER TABLE rooms ADD CHECK ( area_insqm BETWEEN 1 AND 500 );
 ALTER TABLE rooms ADD CHECK ( costperhour BETWEEN 1 AND 200 );
 
 ALTER TABLE rooms
-    ADD CHECK ( singer_booth IN ( 'N', 'Y' ) );
+    ADD CHECK ( singer_booth IN ( 0, 1) );
 
 ALTER TABLE rooms
-    ADD CHECK ( instr_rec_booth IN ( 'N', 'Y' ) );
+    ADD CHECK ( instr_rec_booth IN (0, 1) );
 
 COMMENT ON COLUMN rooms.area_insqm IS
     'Area in square meters';
