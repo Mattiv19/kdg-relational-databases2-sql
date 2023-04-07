@@ -25,7 +25,7 @@ CREATE TABLE artists (
 ALTER TABLE artists
     ADD CONSTRAINT artists_ck_1 CHECK ( length(music_genre) >= 3 );
 
-ALTER TABLE artists ADD CONSTRAINT artists_ck_2 CHECK ( email_artist LIKE '&@&' );
+ALTER TABLE artists ADD CONSTRAINT artists_ck_2 CHECK ( email_artist LIKE '%@%');
 
 ALTER TABLE artists ADD CONSTRAINT artists_pk PRIMARY KEY ( artist_id );
 
