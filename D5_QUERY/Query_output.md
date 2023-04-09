@@ -18,10 +18,10 @@ Milestone 3: Creatie Databank
 
     @query 1: Relatie Veel-op-veel
 
-    SELECT game_title, release_date, patch_title, p.PLAYER_NAME, h.HIGHSCORE, date_played, email
-    FROM computergames cg
-    JOIN highscores h ON cg.game_id = h.game_id
-    JOIN players p ON h.player_id = p.player_id;
+    SELECT name,MUSIC_GENRE, PROFESSION, BIRTH_DATE, PHONE_ARTIST, EMAIL_ARTIST, STUDIO_NAME, ADDRESS, LOCATION, PHONE_STUDIO, EMAIL_STUDIO,LOCAL_ENGINEER 
+    FROM ARTISTS a 
+    JOIN ARTISTS_RECSTUDIOS_RELATION ar ON ar.A_ARTIST_ID = a.ARTIST_ID 
+    JOIN RECORDING_STUDIOS r ON r.STUDIO_CODE = ar.RS_STUDIO_CODE;
 --- 
 ![query 1: Relatie Veel-op-veel](./screenshots/veel_op_veel.PNG)
 
@@ -29,56 +29,73 @@ Milestone 3: Creatie Databank
 
     @query 2: 2 niveau’s diep
 
-    SELECT game_title, channel_name, channel_url, subscriber_count, video_title, viewer_count, duration
-    FROM computergames cg
-    JOIN influencer_youtubechannels iyc ON cg.game_id = iyc.game_id
-    JOIN influencer_youtubevideos iyv ON iyc.channel_id = iyv.channel_id
-    ORDER BY game_title, channel_name, video_title;
+    SELECT STUDIO_NAME, ADDRESS, LOCATION, PHONE_STUDIO, EMAIL_STUDIO, LOCAL_ENGINEER, ROOM_NAME, AREA_INSQM, COSTPERHOUR, SINGER_BOOTH, INSTR_REC_BOOTH, MIXING_CONSOLE, MONITORS, HARDWARE, DAW, SOFTWARE, SYNTHS, VOCAL_MIC
+    FROM RECORDING_STUDIOS r
+    JOIN ROOMS ro ON ro.RECORDING_STUDIOS_STUDIO_CODE = r.STUDIO_CODE
+    JOIN EQUIPMENT e ON e.ROOMS_ROOM_CODE = ro.ROOM_CODE
+    ORDER BY STUDIO_NAME, ROOM_NAME, EQUIPMENT_CODE;
 --- 
-![query 2: 2 niveau’s diep](./screenshots/2_niveaus_diep.PNG)
+![query 2: 2 niveau’s diep_deel1](./screenshots/2niveausdiep_deel1.PNG)
+![query 2: 2 niveau’s diep_deel2](./screenshots/2niveausdiep_deel2.PNG)
 
-    @query 3: player_locations
+    @query 3: bookings
 
-    SELECT zc.countrycode AS "COUNTRY", zc.zipcode AS "ZIP", city, country_name, street, housenumber, p.player_name
-    FROM countries c
-    JOIN zipcodes zc ON c.countrycode = zc.countrycode
-    JOIN locations lc ON zc.countrycode = lc.countrycode AND zc.zipcode = lc.zipcode
-    JOIN player_locations pl ON lc.location_id = pl.location_id
-    JOIN players p ON pl.player_id = p.player_id
-    ORDER BY player_name, country;
+    SELECT RES_DATE, START_HOUR, END_HOUR, NAME, MUSIC_GENRE, PROFESSION, BIRTH_DATE, PHONE_ARTIST, EMAIL_ARTIST, STUDIO_NAME, ADDRESS, LOCATION, PHONE_STUDIO, EMAIL_STUDIO, LOCAL_ENGINEER, ROOM_NAME, AREA_INSQM, COSTPERHOUR, SINGER_BOOTH, INSTR_REC_BOOTH,MIXING_CONSOLE,MONITORS, HARDWARE, DAW, SOFTWARE, SYNTHS,  VOCAL_MIC
+    FROM BOOKINGS b
+    JOIN ARTISTS a ON a.ARTIST_ID = b.ARTISTS_ARTIST_ID
+    JOIN RECORDING_STUDIOS r ON r.STUDIO_CODE = b.ROOMS_STUDIO_CODE
+    JOIN ROOMS ro ON b.ROOMS_ROOM_CODE = ro.ROOM_CODE
+    JOIN EQUIPMENT e ON e.ROOMS_ROOM_CODE = b.ROOMS_ROOM_CODE AND e.RO_REC_STU_CODE = b.ROOMS_STUDIO_CODE
+    ORDER BY RES_DATE, NAME, STUDIO_NAME, ROOM_NAME;
 --- 
-![query 3: player locations](./screenshots/player_locations.PNG)
-
-    @query 4: Game studios
-
-    SELECT gs.studio_name, zc.zipcode, zc.city, c.country_name, release_date, cg.game_title
-    FROM computergames cg
-    JOIN gamestudios gs ON cg.studio_id = gs.studio_id
-    JOIN locations l ON gs.studio_address = l.location_id
-    JOIN zipcodes zc ON l.countrycode = zc.countrycode AND l.zipcode = zc.zipcode
-    JOIN countries c ON zc.countrycode = c.countrycode
-    ORDER BY gs.studio_name,  cg.game_title;
---- 
-![query 4: Game studios](./screenshots/game_studio.PNG)
+![query 3: bookings_deel1](./screenshots/bookings_deel1.PNG)
+![query 3: bookings_deel2](./screenshots/bookings_deel2.PNG)
+![query 3: bookings_deel3](./screenshots/bookings_deel3.PNG)
 
 
   Bewijs Domeinen - constraints M2
 --- 
-    Player: zipcodes - minumum 4 characters
+    Bookings: end hour > start hour
 
 ---
-![Bewijs Zipcodes](./screenshots/bewijs_zipcodes.PNG)
+![Bewijs Bookings_EndHour](./screenshots/bewijs_Bookings_EndHour.PNG)
 
-    Player: email must contains @
-
----
-![Bewijs email](./screenshots/bewijs_email.PNG)
-
-
-    Computergame: release_date < last_updated
+    Artists: music genre - minimum 3 characters
 
 ---
+![Bewijs Artists_MusicGenre](./screenshots/bewijs_Artists_MusicGenre.PNG)
 
-![Bewijs release_patch_dates](./screenshots/bewijs_release_patch_date.PNG)
+
+    Artists: email_artist - must contain @
+
+---
+
+![Bewijs Artists_Email](./screenshots/bewijs_Artists_Emailadres.PNG)
+
+    Recording_Studios: email_studio - must contain @
+
+---
+
+![Bewijs RecordingStudios_Email](./screenshots/bewijs_RecordingStudios_Emailadres.PNG)
+
+    Recording_Studios: location - uppercase
+
+---
+
+![Bewijs RecordingStudios_Location](./screenshots/bewijs_RecordingStudios_Location.PNG)
+
+    Rooms: area_insqm - max 500
+
+---
+
+![Bewijs Rooms_Area](./screenshots/bewijs_Rooms_Area.PNG)
+
+    Rooms: costperhour - max 200
+
+---
+
+![Bewijs Rooms_Cost](./screenshots/bewijs_Rooms_Cost.PNG)
+
+
 
 

@@ -40,14 +40,16 @@ ALTER TABLE artists_recstudios_relation ADD CONSTRAINT artists_recstudios_relati
 CREATE TABLE bookings (
     res_code          INTEGER GENERATED ALWAYS AS IDENTITY,
     res_date          DATE,
-    start_hour        DATE,
-    end_hour          DATE,
+    start_hour        NUMBER(2),
+    end_hour          NUMBER(2),
     artists_artist_id INTEGER NOT NULL,
     rooms_room_code   INTEGER NOT NULL,
     rooms_studio_code INTEGER NOT NULL
 );
 
 ALTER TABLE bookings ADD CONSTRAINT bookings_ck_1 CHECK ( end_hour > start_hour );
+ALTER TABLE bookings ADD CONSTRAINT bookings_ck_2 CHECK ( start_hour < 24 );
+ALTER TABLE bookings ADD CONSTRAINT bookings_ck_3 CHECK ( end_hour < 24 );
 
 ALTER TABLE bookings ADD CONSTRAINT bookings_pk PRIMARY KEY ( res_code );
 
