@@ -58,43 +58,43 @@ Milestone 3: Creatie Databank
     Bookings: end hour > start hour
 
 ---
-![Bewijs Bookings_EndHour](./screenshots/bewijs_Bookings_EndHour.png)
+![Bewijs Bookings_EndHour](./screenshots/Bewijs_Bookings_EndHour.png)
 
     Artists: music genre - minimum 3 characters
 
 ---
-![Bewijs Artists_MusicGenre](./screenshots/bewijs_Artists_MusicGenre.png)
+![Bewijs Artists_MusicGenre](./screenshots/Bewijs_Artists_MusicGenre.png)
 
 
     Artists: email_artist - must contain @
 
 ---
 
-![Bewijs Artists_Email](./screenshots/bewijs_Artists_Emailadres.png)
+![Bewijs Artists_Email](./screenshots/Bewijs_Artists_Emailadres.png)
 
     Recording_Studios: email_studio - must contain @
 
 ---
 
-![Bewijs RecordingStudios_Email](./screenshots/bewijs_RecordingStudios_Emailadres.png)
+![Bewijs RecordingStudios_Email](./screenshots/Bewijs_RecordingStudios_Emailadres.png)
 
     Recording_Studios: location - uppercase
 
 ---
 
-![Bewijs RecordingStudios_Location](./screenshots/bewijs_RecordingStudios_Location.png)
+![Bewijs RecordingStudios_Location](./screenshots/Bewijs_RecordingStudios_Location.png)
 
     Rooms: area_insqm - max 500
 
 ---
 
-![Bewijs Rooms_Area](./screenshots/bewijs_Rooms_Area.png)
+![Bewijs Rooms_Area](./screenshots/Bewijs_Rooms_Area.png)
 
     Rooms: costperhour - max 200
 
 ---
 
-![Bewijs Rooms_Cost](./screenshots/bewijs_Rooms_Cost.png)
+![Bewijs Rooms_Cost](./screenshots/Bewijs_Rooms_Cost.png)
 
 
 
