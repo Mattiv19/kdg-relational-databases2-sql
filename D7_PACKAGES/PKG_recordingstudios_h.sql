@@ -17,9 +17,9 @@ AS
         (   p_res_date      bookings.res_date%TYPE,
             p_start_hour    bookings.start_hour%TYPE,
             p_end_hour      bookings.end_hour%TYPE,
-            p_artist_id     bookings.artists_artist_id%TYPE,
-            p_room_code     bookings.rooms_room_code%TYPE,
-            p_studio_code   bookings.rooms_studio_code%TYPE);
+            p_artist_name   artists.name%TYPE,
+            p_room_name     rooms.room_name%TYPE,
+            p_studio_name   recording_studios.studio_name%TYPE);
 
         PROCEDURE add_equipment
         (   p_mixing_console    equipment.mixing_console%TYPE,
@@ -29,8 +29,8 @@ AS
             p_software          equipment.software%TYPE,
             p_synths            equipment.synths%TYPE,
             p_vocal_mic         equipment.vocal_mic%TYPE,
-            p_room_code         equipment.rooms_room_code%TYPE,
-            p_rec_stu_code      equipment.ro_rec_stu_code%TYPE);
+            p_room_name         rooms.room_name%TYPE,
+            p_rec_stu_name      recording_studios.studio_name%TYPE);
 
         PROCEDURE add_recording_studio
         (   p_studio_name       recording_studios.studio_name%TYPE,
@@ -46,12 +46,12 @@ AS
             p_costperhour       rooms.costperhour%TYPE,
             p_singer_booth      rooms.singer_booth%TYPE,
             p_instr_rec_booth   rooms.instr_rec_booth%TYPE,
-            p_recstudio_name    rooms.recording_studios_studio_code%TYPE);
+            p_recstudio_name    recording_studios.studio_name%TYPE);
 
         PROCEDURE add_artist_recstudio_rel
         (
-            p_artist_id         ARTISTS_RECSTUDIOS_RELATION.a_artist_id%TYPE,
-            p_studio_code       ARTISTS_RECSTUDIOS_RELATION.rs_studio_code%TYPE);
+            p_artist_name   artists.name%TYPE,
+            p_studio_name   recording_studios.studio_name%TYPE);
 
 
 END PKG_recordingstudios;
