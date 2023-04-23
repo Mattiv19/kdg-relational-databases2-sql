@@ -99,11 +99,12 @@ AS
         p_area_insqm        rooms.area_insqm%TYPE,
         p_costperhour       rooms.costperhour%TYPE,
         p_singer_booth      rooms.singer_booth%TYPE,
-        p_instr_rec_booth   rooms.instr_rec_booth%TYPE)
+        p_instr_rec_booth   rooms.instr_rec_booth%TYPE,
+        p_recstudio_name    rooms.recording_studios_studio_code%TYPE)
     AS
         BEGIN
             INSERT INTO ROOMS (ROOM_NAME, AREA_INSQM, COSTPERHOUR, SINGER_BOOTH, INSTR_REC_BOOTH, RECORDING_STUDIOS_STUDIO_CODE)
-            VALUES (p_room_name, p_area_insqm, p_costperhour, p_singer_booth, p_instr_rec_booth, lookup_recording_studio());
+            VALUES (p_room_name, p_area_insqm, p_costperhour, p_singer_booth, p_instr_rec_booth, lookup_recording_studio(p_recstudio_name));
             COMMIT;
             DBMS_OUTPUT.PUT_LINE('The room with name' || p_room_name || 'was added successfully to the database and linked to correct recording studio.');
         END add_room;
@@ -115,11 +116,13 @@ AS
         p_daw               equipment.daw%TYPE,
         p_software          equipment.software%TYPE,
         p_synths            equipment.synths%TYPE,
-        p_vocal_mic         equipment.vocal_mic%TYPE)
+        p_vocal_mic         equipment.vocal_mic%TYPE,
+        p_room_code         equipment.rooms_room_code%TYPE,
+        p_rec_stu_code      equipment.ro_rec_stu_code%TYPE)
     AS
         BEGIN
             INSERT INTO EQUIPMENT(mixing_console, monitors, hardware, daw, software, synths, vocal_mic, rooms_room_code, ro_rec_stu_code)
-            VALUES (p_mixing_console, p_monitors, p_hardware, p_daw, p_software, p_synths, p_vocal_mic, lookup_room(), lookup_recording_studio());
+            VALUES (p_mixing_console, p_monitors, p_hardware, p_daw, p_software, p_synths, p_vocal_mic, lookup_room(p_room_code), lookup_recording_studio(p_rec_stu_code));
             COMMIT;
             DBMS_OUTPUT.PUT_LINE('The equipment related to the room from a recording studio was added successfully to the database');
         END add_equipment;
@@ -127,14 +130,28 @@ AS
     PROCEDURE add_booking
     (   p_res_date      bookings.res_date%TYPE,
         p_start_hour    bookings.start_hour%TYPE,
-        p_end_hour      bookings.end_hour%TYPE)
+        p_end_hour      bookings.end_hour%TYPE,
+        p_artist_id     bookings.artists_artist_id%TYPE,
+        p_room_code     bookings.rooms_room_code%TYPE,
+        p_studio_code   bookings.rooms_studio_code%TYPE)
     AS
         BEGIN
             INSERT INTO BOOKINGS (RES_DATE, START_HOUR, END_HOUR, ARTISTS_ARTIST_ID, ROOMS_ROOM_CODE, ROOMS_STUDIO_CODE)
-            VALUES (p_res_date, p_start_hour, p_end_hour, lookup_artist(), lookup_room(), lookup_recording_studio());
+            VALUES (p_res_date, p_start_hour, p_end_hour, lookup_artist(p_artist_id), lookup_room(p_room_code), lookup_recording_studio(p_studio_code));
         COMMIT;
         DBMS_OUTPUT.PUT_LINE('The booking was successfully registered in the database');
         END add_booking;
+
+    PROCEDURE add_artist_recstudio_rel
+    (        p_artist_id         ARTISTS_RECSTUDIOS_RELATION.a_artist_id%TYPE,
+             p_studio_code       ARTISTS_RECSTUDIOS_RELATION.rs_studio_code%TYPE)
+    AS
+        BEGIN
+            INSERT INTO ARTISTS_RECSTUDIOS_RELATION (A_ARTIST_ID, RS_STUDIO_CODE)
+            VALUES (lookup_artist(p_artist_id), lookup_recording_studio(p_studio_code));
+        COMMIT;
+        DBMS_OUTPUT.PUT_LINE('The artist was successfully linked to the recording studio.');
+        END add_artist_recstudio_rel;
 
 END PKG_recordingstudios;
 
