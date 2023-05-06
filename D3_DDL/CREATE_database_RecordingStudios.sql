@@ -30,11 +30,12 @@ ALTER TABLE artists ADD CONSTRAINT artists_ck_2 CHECK ( email_artist LIKE '%@%')
 ALTER TABLE artists ADD CONSTRAINT artists_pk PRIMARY KEY ( artist_id );
 
 CREATE TABLE artists_recstudios_relation (
-    a_artist_id    INTEGER NOT NULL,
-    rs_studio_code INTEGER NOT NULL
+    artist_studio_rel_id    INTEGER GENERATED ALWAYS AS IDENTITY,
+    a_artist_id             INTEGER NOT NULL,
+    rs_studio_code          INTEGER NOT NULL
 );
 
-ALTER TABLE artists_recstudios_relation ADD CONSTRAINT artists_recstudios_relation_pk PRIMARY KEY ( a_artist_id,
+ALTER TABLE artists_recstudios_relation ADD CONSTRAINT artists_recstudios_relation_pk PRIMARY KEY ( artist_studio_rel_id, a_artist_id,
                                                                                                     rs_studio_code );
 
 CREATE TABLE bookings (
@@ -70,7 +71,7 @@ ALTER TABLE equipment
     ADD CHECK ( mixing_console IN ( 'API', 'AVID', 'NEVE', 'SSL' ) );
 
 ALTER TABLE equipment
-    ADD CHECK ( monitors IN ( 'Adam', 'Barefoot', 'Dynaudio', 'Focal', 'Genelec' ) );
+    ADD CHECK ( monitors IN ( 'Adam', 'Barefoot', 'Dynaudio', 'Focal', 'Genelec') );
 
 ALTER TABLE equipment
     ADD CHECK ( daw IN ( 'Ableton', 'Cubase', 'Logic', 'ProTools' ) );

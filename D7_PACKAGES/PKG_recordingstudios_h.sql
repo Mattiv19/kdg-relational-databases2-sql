@@ -3,6 +3,7 @@ AS
     FUNCTION give_random_recstudio
         RETURN VARCHAR2;
 
+        --  M4
         PROCEDURE empty_tables;
 
         PROCEDURE add_artist
@@ -53,6 +54,41 @@ AS
             p_artist_name   artists.name%TYPE,
             p_studio_name   recording_studios.studio_name%TYPE);
 
+        -- M5
+        PROCEDURE generate_random_artist(
+            p_count IN NUMBER DEFAULT 1
+        );
+
+        PROCEDURE generate_random_recordingstudio(
+            p_count IN NUMBER DEFAULT 1
+        );
+
+        PROCEDURE generate_random_relation(
+            p_count IN NUMBER DEFAULT 1
+        );
+
+        PROCEDURE generate_random_room(
+            p_count IN NUMBER DEFAULT 1
+        );
+
+        PROCEDURE generate_random_equipment(
+            p_count_equipment IN NUMBER DEFAULT 1,
+            p_count_rooms IN NUMBER DEFAULT 1
+        );
+
+        PROCEDURE generate_many_to_many(
+            p_amount_artists            IN NUMBER DEFAULT 1,
+            p_amount_recording_studios  IN NUMBER DEFAULT 1,
+            p_amount_relations          IN NUMBER DEFAULT 1
+        );
+
+        PROCEDURE generate_2_levels(
+            p_amount_recording_studios  IN NUMBER DEFAULT 1,
+            p_amount_rooms              IN NUMBER DEFAULT 1,
+            P_amount_equipment          IN NUMBER DEFAULT 1
+        );
+
+        PROCEDURE bewijs_milestone_5;
 
 END PKG_recordingstudios;
 /

@@ -1,6 +1,11 @@
 BEGIN
     PKG_recordingstudios.empty_tables();
+    PKG_RECORDINGSTUDIOS.bewijs_milestone_5();
 END;
+
+SELECT * FROM ARTISTS_RECSTUDIOS_RELATION;
+
+SELECT upper(STUDIO_NAME) FROM RECORDING_STUDIOS;
 
 BEGIN
 
@@ -15,7 +20,6 @@ BEGIN
     PKG_RECORDINGSTUDIOS.ADD_RECORDING_STUDIO('Drumcode Studios', 'Koningstraat 14','GENT', 0499195183, 'info@drumcode.com', 1);
     PKG_RECORDINGSTUDIOS.ADD_RECORDING_STUDIO('Valhalla Recording Studios', 'Palmstraat 32','HASSELT', 0478392935, 'record@valhallastudios.com', 0);
     PKG_RECORDINGSTUDIOS.ADD_RECORDING_STUDIO('Universal Studios', 'Rue Picard 7','BRUSSEL', 027758140, 'contact@universalmusic.be', 1);
-
     PKG_RECORDINGSTUDIOS.ADD_ROOM('Road Prince', 45.12, 100, 1, 1,'ABBEY ROAD');
     PKG_RECORDINGSTUDIOS.ADD_ROOM('Filth On Acid', 34.35, 75, 0, 0, 'THE WAREHOUSE STUDIOS');
     PKG_RECORDINGSTUDIOS.ADD_ROOM('Beyer', 23.76, 65, 0, 0,'DRUMCODE STUDIOS');
