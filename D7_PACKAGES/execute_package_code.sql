@@ -1,5 +1,8 @@
 BEGIN
     PKG_recordingstudios.empty_tables();
+END;
+
+BEGIN
 
     PKG_recordingstudios.ADD_ARTIST('The Weeknd', 'Pop', 'Singer', TO_DATE('16-02-1990'), 0478031245, 'theweeknd@gmail.com');
     PKG_RECORDINGSTUDIOS.ADD_ARTIST('Reinier Zonneveld', 'Techno', 'Producer', TO_DATE('30-01-1991'), 0499021456, 'reinier.zonneveld@gmail.com');
