@@ -2,12 +2,6 @@ CREATE OR REPLACE PACKAGE BODY PKG_recordingstudios
 AS
     -- PRIVATE HELP FUNCTIONS M4 --
     -- Lookup functions --
-    FUNCTION give_random_recstudio
-        RETURN VARCHAR2
-    AS
-    BEGIN
-        RETURN 'Random_recstudio';
-    END give_random_recstudio;
 
     FUNCTION lookup_artist
     (   p_artist_name   artists.name%TYPE)
@@ -15,7 +9,6 @@ AS
     AS
         lo_artist_id INTEGER;
     BEGIN
-        DBMS_OUTPUT.PUT_LINE(p_artist_name);
         SELECT artist_id
         INTO lo_artist_id
         FROM ARTISTS
@@ -30,7 +23,6 @@ AS
     AS
         lo_studio_code INTEGER;
     BEGIN
-        DBMS_OUTPUT.PUT_LINE(p_studio_name);
         SELECT studio_code
         INTO lo_studio_code
         FROM RECORDING_STUDIOS
@@ -48,10 +40,26 @@ AS
         SELECT room_code
         INTO lo_room_code
         FROM ROOMS
-        WHERE UPPER(room_name) = p_room_name;
+        WHERE UPPER(room_name) = UPPER(p_room_name);
 
         RETURN lo_room_code;
     END lookup_room;
+
+    FUNCTION lookup_recording_studio_room
+        (p_room_name    rooms.room_name%TYPE)
+        RETURN INTEGER
+    AS
+        lo_studio_code_room INTEGER;
+    BEGIN
+        SELECT RECORDING_STUDIOS_STUDIO_CODE
+        INTO lo_studio_code_room
+        FROM ROOMS
+        WHERE UPPER(ROOM_NAME) = UPPER(p_room_name);
+
+        RETURN  lo_studio_code_room;
+    END lookup_recording_studio_room;
+
+
 
     -- PRIVATE FUNCTIONS M5
     -- Random Functions M5 --
@@ -244,26 +252,6 @@ AS
         RETURN v_studio_id.COUNT;
     END recording_studios_count ;
 
-    FUNCTION rooms_count
-        RETURN INTEGER
-    AS
-        TYPE t_room_code IS TABLE OF rooms.room_code%TYPE;
-        v_room_code  t_room_code;
-    BEGIN
-        SELECT room_code BULK COLLECT INTO v_room_code FROM rooms;
-        RETURN v_room_code.COUNT;
-    END rooms_count;
-
-    FUNCTION equipment_count
-        RETURN INTEGER
-    AS
-        TYPE t_equipment_code IS TABLE OF equipment.equipment_code%TYPE;
-        v_equipment_code  t_equipment_code;
-    BEGIN
-        SELECT equipment_code BULK COLLECT INTO v_equipment_code FROM equipment;
-        RETURN v_equipment_code.COUNT;
-    END equipment_count;
-
 
     -- PUBLIC FUNCTIONS --
     -- Procedures M4 --
@@ -296,7 +284,7 @@ AS
             INSERT INTO ARTISTS (name, music_genre, profession, birth_date, phone_artist, email_artist)
             VALUES (p_artist_name, p_music_genre, p_profession, p_birth_date, p_phone_artist, p_email_artist);
             COMMIT;
-            DBMS_OUTPUT.PUT_LINE('The artist with the name ' || p_artist_name || ' was successfully added to the database.');
+            -- DBMS_OUTPUT.PUT_LINE('The artist with the name ' || p_artist_name || ' was successfully added to the database.');
         END add_artist;
 
     PROCEDURE add_recording_studio
@@ -311,7 +299,7 @@ AS
             INSERT INTO RECORDING_STUDIOS (STUDIO_NAME, ADDRESS, LOCATION, PHONE_STUDIO, EMAIL_STUDIO, LOCAL_ENGINEER)
             VALUES (p_studio_name, p_address, p_location, p_phone_studio, p_email_studio, p_local_engineer);
             COMMIT;
-            DBMS_OUTPUT.PUT_LINE('Recording studio ' || p_studio_name || ' was successfully added to the database.');
+            -- DBMS_OUTPUT.PUT_LINE('Recording studio ' || p_studio_name || ' was successfully added to the database.');
         END add_recording_studio;
 
     PROCEDURE add_room
@@ -329,7 +317,7 @@ AS
             INSERT INTO ROOMS (ROOM_NAME, AREA_INSQM, COSTPERHOUR, SINGER_BOOTH, INSTR_REC_BOOTH, RECORDING_STUDIOS_STUDIO_CODE)
             VALUES (p_room_name, p_area_insqm, p_costperhour, p_singer_booth, p_instr_rec_booth, v_studio_id);
             COMMIT;
-            DBMS_OUTPUT.PUT_LINE('The room with name ' || p_room_name || ' was added successfully to the database.');
+            -- DBMS_OUTPUT.PUT_LINE('The room with name ' || p_room_name || ' was added successfully to the database.');
         END add_room;
 
     PROCEDURE add_equipment
@@ -344,14 +332,18 @@ AS
         p_rec_stu_name      recording_studios.studio_name%TYPE)
     AS
         v_room_id ROOMS.room_code%TYPE;
-        v_recstu_id RECORDING_STUDIOS.studio_code%TYPE;
+        v_recstu_id ROOMS.RECORDING_STUDIOS_STUDIO_CODE%TYPE;
         BEGIN
+            -- DBMS_OUTPUT.PUT_LINE(p_room_name);
+            -- DBMS_OUTPUT.PUT_LINE(p_rec_stu_name);
             v_room_id := lookup_room(p_room_name);
-            v_recstu_id := lookup_recording_studio(p_rec_stu_name);
+            -- DBMS_OUTPUT.PUT_LINE(v_room_id);
+            v_recstu_id := lookup_recording_studio_room(p_room_name);
+            -- DBMS_OUTPUT.PUT_LINE(v_recstu_id);
             INSERT INTO EQUIPMENT(mixing_console, monitors, hardware, daw, software, synths, vocal_mic, rooms_room_code, ro_rec_stu_code)
             VALUES (p_mixing_console, p_monitors, p_hardware, p_daw, p_software, p_synths, p_vocal_mic, v_room_id, v_recstu_id);
             COMMIT;
-            DBMS_OUTPUT.PUT_LINE('The equipment was added successfully to the database.');
+            -- DBMS_OUTPUT.PUT_LINE('The equipment was added successfully to the database.');
         END add_equipment;
 
     PROCEDURE add_booking
@@ -372,7 +364,7 @@ AS
             INSERT INTO BOOKINGS (RES_DATE, START_HOUR, END_HOUR, ARTISTS_ARTIST_ID, ROOMS_ROOM_CODE, ROOMS_STUDIO_CODE)
             VALUES (p_res_date, p_start_hour, p_end_hour,v_artist_id, v_room_id, v_recstu_id);
         COMMIT;
-        DBMS_OUTPUT.PUT_LINE('The booking was successfully registered in the database.');
+       --  DBMS_OUTPUT.PUT_LINE('The booking was successfully registered in the database.');
         END add_booking;
 
     PROCEDURE add_artist_recstudio_rel
@@ -387,7 +379,7 @@ AS
             INSERT INTO ARTISTS_RECSTUDIOS_RELATION (A_ARTIST_ID, RS_STUDIO_CODE)
             VALUES (v_artist_id, v_recstu_id);
         COMMIT;
-        DBMS_OUTPUT.PUT_LINE('The artist was successfully linked to the recording studio.');
+        -- DBMS_OUTPUT.PUT_LINE('The artist was successfully linked to the recording studio.');
         END add_artist_recstudio_rel;
 
     -- Procedures M5
@@ -462,9 +454,9 @@ AS
         FOR i IN 1 .. p_count
             LOOP
                 v_artistname := random_artistname();
-                DBMS_OUTPUT.PUT_LINE(v_artistname);
+                -- DBMS_OUTPUT.PUT_LINE(v_artistname);
                 v_studioname := random_studio_name();
-                DBMS_OUTPUT.PUT_LINE(v_studioname);
+                -- DBMS_OUTPUT.PUT_LINE(v_studioname);
                 add_artist_recstudio_rel(v_artistname, v_studioname);
             END LOOP;
     END generate_random_relation;
@@ -487,7 +479,7 @@ AS
             LOOP
                 FOR j in 1 ..p_count
                     LOOP
-                    v_room_name := 'Room_' || i;
+                    v_room_name := 'Room_' || i || '_'|| J;
                     v_area_insqm := random_number(1000, 49999)/100;
                     v_costperhour := random_number(10, 199);
                     -- DBMS_OUTPUT.PUT_LINE(v_costperhour);
@@ -504,7 +496,7 @@ AS
                     v_count := v_count +1;
                     END LOOP;
             END LOOP;
-        DBMS_OUTPUT.PUT_LINE('Generate rooms(' || p_count || ') generated ' || v_count || 'rows.');
+        DBMS_OUTPUT.PUT_LINE(TO_CHAR(SYSTIMESTAMP, '[YYYY-MM-DD HH24:MM:SS]  ') || 'Generate rooms(' || p_count || ') generated ' || v_count || ' rows.');
     END generate_random_room;
 
     PROCEDURE generate_random_equipment(
@@ -538,14 +530,23 @@ AS
                         FOR z in 1 ..p_count_equipment
                             LOOP
                             v_mixing_console := random_mixing_console();
+                            -- DBMS_OUTPUT.PUT_LINE(v_mixing_console);
                             v_monitors := random_monitors();
+                            -- DBMS_OUTPUT.PUT_LINE(v_monitors);
                             v_hardware := random_hardware() || ', ' || random_hardware();
+                            -- DBMS_OUTPUT.PUT_LINE(v_hardware);
                             v_daw := random_DAW();
-                            v_software := random_software() || ', ' || random_software() ||  ', ' || random_software();
+                            -- DBMS_OUTPUT.PUT_LINE(v_daw);
+                            v_software := random_software() || ',' || random_software() ||  ',' || random_software();
+                            -- DBMS_OUTPUT.PUT_LINE(v_software);
                             v_synths := random_synths() || ', ' || random_synths() || ', ' || random_synths();
+                            -- DBMS_OUTPUT.PUT_LINE(v_synths);
                             v_vocal_mic := random_vocal_mic();
+                            -- DBMS_OUTPUT.PUT_LINE(v_vocal_mic);
                             v_room_name := random_room_name();
-                            v_rec_stu_name := random_studio_name();
+                            -- DBMS_OUTPUT.PUT_LINE(v_room_name);
+                            v_rec_stu_name := lookup_recording_studio_room(v_room_name);
+                            -- DBMS_OUTPUT.PUT_LINE(v_rec_stu_name);
 
                             add_equipment(v_mixing_console,
                                 v_monitors,
@@ -560,7 +561,7 @@ AS
                             END LOOP;
                     END LOOP;
             END LOOP;
-        DBMS_OUTPUT.PUT_LINE('Generate equipment(' || p_count_equipment || ')  generated' || v_count || 'rows.');
+        DBMS_OUTPUT.PUT_LINE(TO_CHAR(SYSTIMESTAMP, '[YYYY-MM-DD HH24:MM:SS]  ') || 'Generate equipment(' || p_count_equipment || ') generated ' || v_count || ' rows.');
     END generate_random_equipment;
 
     PROCEDURE generate_many_to_many(
@@ -573,18 +574,18 @@ AS
         ts2 timestamp;
     BEGIN
         ts1 := SYSTIMESTAMP;
-        DBMS_OUTPUT.PUT_LINE('4 - Starting Many-to_Many generation: generate_many_to_many('|| p_amount_artists || ', ' || p_amount_recording_studios || ', ' || p_amount_relations || ')');
+        DBMS_OUTPUT.PUT_LINE(TO_CHAR(SYSTIMESTAMP, '[YYYY-MM-DD HH24:MM:SS]  ') || '4 - Starting Many-to_Many generation: generate_many_to_many('|| p_amount_artists || ', ' || p_amount_recording_studios || ', ' || p_amount_relations || ')');
 
-        DBMS_OUTPUT.PUT_LINE('4.1 - generate_random_artist(' || p_amount_artists || ')');
+        DBMS_OUTPUT.PUT_LINE(TO_CHAR(SYSTIMESTAMP, '[YYYY-MM-DD HH24:MM:SS]  ') || '4.1 - generate_random_artist(' || p_amount_artists || ')');
         generate_random_artist(p_amount_artists);
-        DBMS_OUTPUT.PUT_LINE('4.2 - generate_random_recordingstudio(' || p_amount_recording_studios || ')');
+        DBMS_OUTPUT.PUT_LINE(TO_CHAR(SYSTIMESTAMP, '[YYYY-MM-DD HH24:MM:SS]  ') || '4.2 - generate_random_recordingstudio(' || p_amount_recording_studios || ')');
         generate_random_recordingstudio(p_amount_recording_studios);
-        DBMS_OUTPUT.PUT_LINE('4.3 - generate_random_relation(' || p_amount_recording_studios || ')');
+        DBMS_OUTPUT.PUT_LINE(TO_CHAR(SYSTIMESTAMP, '[YYYY-MM-DD HH24:MM:SS]  ') || '4.3 - generate_random_relation(' || p_amount_recording_studios || ')');
         generate_random_relation(p_amount_relations);
 
 
         ts2 := SYSTIMESTAMP;
-        DBMS_OUTPUT.PUT_LINE('The duration of generate_Many_to_Many was: ' || TO_CHAR(ts2 - ts1, 'SSSS.FF'));
+        DBMS_OUTPUT.PUT_LINE(TO_CHAR(SYSTIMESTAMP, '[YYYY-MM-DD HH24:MM:SS]  ') || 'The duration of generate_Many_to_Many was: ' || TO_CHAR(ts2 - ts1, 'SSSS.FF'));
 
     END generate_many_to_many;
 
@@ -599,36 +600,34 @@ AS
         ts2 timestamp;
     BEGIN
         ts1 := SYSTIMESTAMP;
-        dbms_output.put_line('Start time is ' || ts1);
+        dbms_output.put_line(TO_CHAR(SYSTIMESTAMP, '[YYYY-MM-DD HH24:MM:SS]  ') || 'Start time is ' || ts1);
         v_recstudio_count := recording_studios_count();
-        dbms_output.put_line('Studio count is ' || v_recstudio_count);
-        dbms_output.put_line('4 - Starting generate_2_levels: generate_2_levels(' || p_amount_recording_studios || ',' ||  p_amount_rooms || ',' || p_amount_equipment || ')');
+        dbms_output.put_line(TO_CHAR(SYSTIMESTAMP, '[YYYY-MM-DD HH24:MM:SS]  ') || 'Studio count is ' || v_recstudio_count);
+        dbms_output.put_line(TO_CHAR(SYSTIMESTAMP, '[YYYY-MM-DD HH24:MM:SS]  ') || '4 - Starting generate_2_levels: generate_2_levels(' || p_amount_recording_studios || ',' ||  p_amount_rooms || ',' || p_amount_equipment || ')');
 
         IF v_recstudio_count >= p_amount_recording_studios THEN
-            dbms_output.put_line('We already have '  || v_recstudio_count || ' studios in the database --> Skip generate studios');
+            dbms_output.put_line(TO_CHAR(SYSTIMESTAMP, '[YYYY-MM-DD HH24:MM:SS]  ') || 'We already have '  || v_recstudio_count || ' studios in the database --> Skip generate studios');
         ELSE
             generate_random_recordingstudio((p_amount_recording_studios - v_recstudio_count));
-            DBMS_OUTPUT.PUT_LINE('4.1 - generate_random_recordingstudio(' || (p_amount_recording_studios - v_recstudio_count) || ')');
+            DBMS_OUTPUT.PUT_LINE(TO_CHAR(SYSTIMESTAMP, '[YYYY-MM-DD HH24:MM:SS]  ') || '4.1 - generate_random_recordingstudio(' || (p_amount_recording_studios - v_recstudio_count) || ')');
         END IF;
         generate_random_room(p_amount_rooms);
-        DBMS_OUTPUT.PUT_LINE('Generate rooms(' || p_amount_rooms || ') generated ' || rooms_count() || 'rows.');
         generate_random_equipment(P_amount_equipment);
-        DBMS_OUTPUT.PUT_LINE('Generate equipment(' || P_amount_equipment || ')  generated' || equipment_count() || 'rows.');
 
         ts2 := SYSTIMESTAMP;
-        dbms_output.put_line('The duration of generate_2_levels was' || TO_CHAR(ts2 - ts1, 'SSSS.FF'));
+        dbms_output.put_line(TO_CHAR(SYSTIMESTAMP, '[YYYY-MM-DD HH24:MM:SS]  ') || 'The duration of generate_2_levels was: ' || TO_CHAR(ts2 - ts1, 'SSSS.FF'));
 
     END generate_2_levels;
 
     PROCEDURE bewijs_milestone_5
     AS
     BEGIN
-        dbms_output.put_line('1 - random nummer teruggeven binnen een nummerbereik.');
-        dbms_output.put_line('random_number(5,25) --> ' || random_number(5,25));
-        dbms_output.put_line('2 - random datum binnen een bereik.');
-        dbms_output.put_line('random_date(to_date(''01012015'', ''DDMMYYYY''), sysdate) --> ' || random_date(to_date('01012015', 'DDMMYYYY'), SYSDATE));
-        dbms_output.put_line('random tekst string uit een lijst');
-        dbms_output.put_line('random_music_genre() --> ' || random_music_genre());
+        dbms_output.put_line(TO_CHAR(SYSTIMESTAMP, '[YYYY-MM-DD HH24:MM:SS]  ') || '1 - random nummer teruggeven binnen een nummerbereik.');
+        dbms_output.put_line(TO_CHAR(SYSTIMESTAMP, '[YYYY-MM-DD HH24:MM:SS]  ') || '  random_number(5,25) --> ' || random_number(5,25));
+        dbms_output.put_line(TO_CHAR(SYSTIMESTAMP, '[YYYY-MM-DD HH24:MM:SS]  ') || '2 - random datum binnen een bereik.');
+        dbms_output.put_line(TO_CHAR(SYSTIMESTAMP, '[YYYY-MM-DD HH24:MM:SS]  ') || '  random_date(to_date(''01012015'', ''DDMMYYYY''), sysdate) --> ' || random_date(to_date('01012015', 'DDMMYYYY'), SYSDATE));
+        dbms_output.put_line(TO_CHAR(SYSTIMESTAMP, '[YYYY-MM-DD HH24:MM:SS]  ') || '3 - random tekst string uit een lijst');
+        dbms_output.put_line(TO_CHAR(SYSTIMESTAMP, '[YYYY-MM-DD HH24:MM:SS]  ') || '  random_music_genre() --> ' || random_music_genre());
         generate_many_to_many(20,20, 50);
         generate_2_levels(20,40,50);
     END bewijs_milestone_5;

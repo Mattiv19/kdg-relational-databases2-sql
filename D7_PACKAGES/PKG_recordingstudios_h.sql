@@ -1,8 +1,5 @@
 CREATE OR REPLACE PACKAGE PKG_recordingstudios
 AS
-    FUNCTION give_random_recstudio
-        RETURN VARCHAR2;
-
         --  M4
         PROCEDURE empty_tables;
 
