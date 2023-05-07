@@ -495,7 +495,7 @@ AS
                     v_count := v_count +1;
                     END LOOP;
             END LOOP;
-        DBMS_OUTPUT.PUT_LINE(TO_CHAR(SYSTIMESTAMP, '[YYYY-MM-DD HH24:MM:SS]  ') || 'Generate rooms(' || p_count || ') generated ' || v_count || ' rows.');
+        DBMS_OUTPUT.PUT_LINE(TO_CHAR(SYSTIMESTAMP, '[YYYY-MM-DD HH24:MI:SS]  ') || 'Generate rooms(' || p_count || ') generated ' || v_count || ' rows.');
     END generate_random_room;
 
     PROCEDURE generate_random_equipment(
@@ -559,7 +559,7 @@ AS
                             END LOOP;
                     END LOOP;
             END LOOP;
-        DBMS_OUTPUT.PUT_LINE(TO_CHAR(SYSTIMESTAMP, '[YYYY-MM-DD HH24:MM:SS]  ') || 'Generate equipment(' || p_count_equipment || ') generated ' || v_count || ' rows.');
+        DBMS_OUTPUT.PUT_LINE(TO_CHAR(SYSTIMESTAMP, '[YYYY-MM-DD HH24:MI:SS]  ') || 'Generate equipment(' || p_count_equipment || ') generated ' || v_count || ' rows.');
     END generate_random_equipment;
 
     PROCEDURE generate_many_to_many(
@@ -572,18 +572,18 @@ AS
         ts2 timestamp;
     BEGIN
         ts1 := SYSTIMESTAMP;
-        DBMS_OUTPUT.PUT_LINE(TO_CHAR(SYSTIMESTAMP, '[YYYY-MM-DD HH24:MM:SS]  ') || '4 - Starting Many-to_Many generation: generate_many_to_many('|| p_amount_artists || ', ' || p_amount_recording_studios || ', ' || p_amount_relations || ')');
+        DBMS_OUTPUT.PUT_LINE(TO_CHAR(SYSTIMESTAMP, '[YYYY-MM-DD HH24:MI:SS]  ') || '4 - Starting Many-to_Many generation: generate_many_to_many('|| p_amount_artists || ', ' || p_amount_recording_studios || ', ' || p_amount_relations || ')');
 
-        DBMS_OUTPUT.PUT_LINE(TO_CHAR(SYSTIMESTAMP, '[YYYY-MM-DD HH24:MM:SS]  ') || '4.1 - generate_random_artist(' || p_amount_artists || ')');
+        DBMS_OUTPUT.PUT_LINE(TO_CHAR(SYSTIMESTAMP, '[YYYY-MM-DD HH24:MI:SS]  ') || '4.1 - generate_random_artist(' || p_amount_artists || ')');
         generate_random_artist(p_amount_artists);
-        DBMS_OUTPUT.PUT_LINE(TO_CHAR(SYSTIMESTAMP, '[YYYY-MM-DD HH24:MM:SS]  ') || '4.2 - generate_random_recordingstudio(' || p_amount_recording_studios || ')');
+        DBMS_OUTPUT.PUT_LINE(TO_CHAR(SYSTIMESTAMP, '[YYYY-MM-DD HH24:MI:SS]  ') || '4.2 - generate_random_recordingstudio(' || p_amount_recording_studios || ')');
         generate_random_recordingstudio(p_amount_recording_studios);
-        DBMS_OUTPUT.PUT_LINE(TO_CHAR(SYSTIMESTAMP, '[YYYY-MM-DD HH24:MM:SS]  ') || '4.3 - generate_random_relation(' || p_amount_recording_studios || ')');
+        DBMS_OUTPUT.PUT_LINE(TO_CHAR(SYSTIMESTAMP, '[YYYY-MM-DD HH24:MI:SS]  ') || '4.3 - generate_random_relation(' || p_amount_recording_studios || ')');
         generate_random_relation(p_amount_relations);
 
 
         ts2 := SYSTIMESTAMP;
-        DBMS_OUTPUT.PUT_LINE(TO_CHAR(SYSTIMESTAMP, '[YYYY-MM-DD HH24:MM:SS]  ') || 'The duration of generate_Many_to_Many was: ' || TO_CHAR(ts2 - ts1, 'SSSS.FF'));
+        DBMS_OUTPUT.PUT_LINE(TO_CHAR(SYSTIMESTAMP, '[YYYY-MM-DD HH24:MI:SS]  ') || 'The duration of generate_Many_to_Many was: ' || TO_CHAR(ts2 - ts1, 'SSSS.FF'));
 
     END generate_many_to_many;
 
@@ -598,37 +598,77 @@ AS
         ts2 timestamp;
     BEGIN
         ts1 := SYSTIMESTAMP;
-        dbms_output.put_line(TO_CHAR(SYSTIMESTAMP, '[YYYY-MM-DD HH24:MM:SS]  ') || 'Start time is ' || ts1);
+        dbms_output.put_line(TO_CHAR(SYSTIMESTAMP, '[YYYY-MM-DD HH24:MI:SS]  ') || 'Start time is ' || ts1);
         v_recstudio_count := recording_studios_count();
-        dbms_output.put_line(TO_CHAR(SYSTIMESTAMP, '[YYYY-MM-DD HH24:MM:SS]  ') || 'Studio count is ' || v_recstudio_count);
-        dbms_output.put_line(TO_CHAR(SYSTIMESTAMP, '[YYYY-MM-DD HH24:MM:SS]  ') || '4 - Starting generate_2_levels: generate_2_levels(' || p_amount_recording_studios || ',' ||  p_amount_rooms || ',' || p_amount_equipment || ')');
+        dbms_output.put_line(TO_CHAR(SYSTIMESTAMP, '[YYYY-MM-DD HH24:MI:SS]  ') || 'Studio count is ' || v_recstudio_count);
+        dbms_output.put_line(TO_CHAR(SYSTIMESTAMP, '[YYYY-MM-DD HH24:MI:SS]  ') || '4 - Starting generate_2_levels: generate_2_levels(' || p_amount_recording_studios || ',' ||  p_amount_rooms || ',' || p_amount_equipment || ')');
 
         IF v_recstudio_count >= p_amount_recording_studios THEN
-            dbms_output.put_line(TO_CHAR(SYSTIMESTAMP, '[YYYY-MM-DD HH24:MM:SS]  ') || 'We already have '  || v_recstudio_count || ' studios in the database --> Skip generate studios');
+            dbms_output.put_line(TO_CHAR(SYSTIMESTAMP, '[YYYY-MM-DD HH24:MI:SS]  ') || 'We already have '  || v_recstudio_count || ' studios in the database --> Skip generate studios');
         ELSE
             generate_random_recordingstudio((p_amount_recording_studios - v_recstudio_count));
-            DBMS_OUTPUT.PUT_LINE(TO_CHAR(SYSTIMESTAMP, '[YYYY-MM-DD HH24:MM:SS]  ') || '4.1 - generate_random_recordingstudio(' || (p_amount_recording_studios - v_recstudio_count) || ')');
+            DBMS_OUTPUT.PUT_LINE(TO_CHAR(SYSTIMESTAMP, '[YYYY-MM-DD HH24:MI:SS]  ') || '4.1 - generate_random_recordingstudio(' || (p_amount_recording_studios - v_recstudio_count) || ')');
         END IF;
         generate_random_room(p_amount_rooms);
-        generate_random_equipment(P_amount_equipment);
+        generate_random_equipment(p_amount_equipment, p_amount_rooms);
 
         ts2 := SYSTIMESTAMP;
-        dbms_output.put_line(TO_CHAR(SYSTIMESTAMP, '[YYYY-MM-DD HH24:MM:SS]  ') || 'The duration of generate_2_levels was: ' || TO_CHAR(ts2 - ts1, 'SSSS.FF'));
+        dbms_output.put_line(TO_CHAR(SYSTIMESTAMP, '[YYYY-MM-DD HH24:MI:SS]  ') || 'The duration of generate_2_levels was: ' || TO_CHAR(ts2 - ts1, 'SSSS.FF'));
 
     END generate_2_levels;
 
     PROCEDURE bewijs_milestone_5
     AS
     BEGIN
-        dbms_output.put_line(TO_CHAR(SYSTIMESTAMP, '[YYYY-MM-DD HH24:MM:SS]  ') || '1 - random nummer teruggeven binnen een nummerbereik.');
-        dbms_output.put_line(TO_CHAR(SYSTIMESTAMP, '[YYYY-MM-DD HH24:MM:SS]  ') || '  random_number(5,25) --> ' || random_number(5,25));
-        dbms_output.put_line(TO_CHAR(SYSTIMESTAMP, '[YYYY-MM-DD HH24:MM:SS]  ') || '2 - random datum binnen een bereik.');
-        dbms_output.put_line(TO_CHAR(SYSTIMESTAMP, '[YYYY-MM-DD HH24:MM:SS]  ') || '  random_date(to_date(''01012015'', ''DDMMYYYY''), sysdate) --> ' || random_date(to_date('01012015', 'DDMMYYYY'), SYSDATE));
-        dbms_output.put_line(TO_CHAR(SYSTIMESTAMP, '[YYYY-MM-DD HH24:MM:SS]  ') || '3 - random tekst string uit een lijst');
-        dbms_output.put_line(TO_CHAR(SYSTIMESTAMP, '[YYYY-MM-DD HH24:MM:SS]  ') || '  random_music_genre() --> ' || random_music_genre());
+        dbms_output.put_line(TO_CHAR(SYSTIMESTAMP, '[YYYY-MM-DD HH24:MI:SS]  ') || '1 - random nummer teruggeven binnen een nummerbereik.');
+        dbms_output.put_line(TO_CHAR(SYSTIMESTAMP, '[YYYY-MM-DD HH24:MI:SS]  ') || '  random_number(5,25) --> ' || random_number(5,25));
+        dbms_output.put_line(TO_CHAR(SYSTIMESTAMP, '[YYYY-MM-DD HH24:MI:SS]  ') || '2 - random datum binnen een bereik.');
+        dbms_output.put_line(TO_CHAR(SYSTIMESTAMP, '[YYYY-MM-DD HH24:MI:SS]  ') || '  random_date(to_date(''01012015'', ''DDMMYYYY''), sysdate) --> ' || random_date(to_date('01012015', 'DDMMYYYY'), SYSDATE));
+        dbms_output.put_line(TO_CHAR(SYSTIMESTAMP, '[YYYY-MM-DD HH24:MI:SS]  ') || '3 - random tekst string uit een lijst');
+        dbms_output.put_line(TO_CHAR(SYSTIMESTAMP, '[YYYY-MM-DD HH24:MI:SS]  ') || '  random_music_genre() --> ' || random_music_genre());
         generate_many_to_many(20,20, 50);
         generate_2_levels(20,40,50);
     END bewijs_milestone_5;
+
+    PROCEDURE manueel_m4
+    AS
+        BEGIN
+            PKG_recordingstudios.ADD_ARTIST('The Weeknd', 'Pop', 'Singer', TO_DATE('16-02-1990'), 0478031245, 'theweeknd@gmail.com');
+            PKG_RECORDINGSTUDIOS.ADD_ARTIST('Reinier Zonneveld', 'Techno', 'Producer', TO_DATE('30-01-1991'), 0499021456, 'reinier.zonneveld@gmail.com');
+            PKG_RECORDINGSTUDIOS.ADD_ARTIST('Eli Brown', 'Techno', 'Producer', TO_DATE('12-09-1989'), 0497032848, 'elibrown@gmail.com');
+            PKG_RECORDINGSTUDIOS.ADD_ARTIST('SG Lewis', 'Pop', 'Singer', TO_DATE('09-04-1994'), 0476149593, 'sglewis@gmail.com');
+            PKG_RECORDINGSTUDIOS.ADD_ARTIST('Drake', 'Rap', 'Singer', TO_DATE('24-10-1986'), 0499375382, 'contact@drake.com');
+
+            PKG_RECORDINGSTUDIOS.ADD_RECORDING_STUDIO('Abbey Road', 'Italiëlei 2','ANTWERPEN', 0475021343, 'abbeyroad@gmail.com', 1);
+            PKG_RECORDINGSTUDIOS.ADD_RECORDING_STUDIO('The Warehouse Studios', 'Merksemsebaan 179','WIJNEGEM', 0498931988, 'warehousestudios@outlook.com', 0);
+            PKG_RECORDINGSTUDIOS.ADD_RECORDING_STUDIO('Drumcode Studios', 'Koningstraat 14','GENT', 0499195183, 'info@drumcode.com', 1);
+            PKG_RECORDINGSTUDIOS.ADD_RECORDING_STUDIO('Valhalla Recording Studios', 'Palmstraat 32','HASSELT', 0478392935, 'record@valhallastudios.com', 0);
+            PKG_RECORDINGSTUDIOS.ADD_RECORDING_STUDIO('Universal Studios', 'Rue Picard 7','BRUSSEL', 027758140, 'contact@universalmusic.be', 1);
+
+            PKG_RECORDINGSTUDIOS.ADD_ROOM('Road Prince', 45.12, 100, 1, 1,'ABBEY ROAD');
+            PKG_RECORDINGSTUDIOS.ADD_ROOM('Filth On Acid', 34.35, 75, 0, 0, 'THE WAREHOUSE STUDIOS');
+            PKG_RECORDINGSTUDIOS.ADD_ROOM('Beyer', 23.76, 65, 0, 0,'DRUMCODE STUDIOS');
+            PKG_RECORDINGSTUDIOS.ADD_ROOM('Atlantis', 92.52, 135, 1, 1, 'VALHALLA RECORDING STUDIOS');
+            PKG_RECORDINGSTUDIOS.ADD_ROOM('Michael',103.59, 185, 1, 1, 'UNIVERSAL STUDIOS');
+
+            PKG_RECORDINGSTUDIOS.ADD_EQUIPMENT('SSL', 'Dynaudio', 'LA-2A compressor, 1176 compressor, Pultec', 'ProTools', 'Melodyne, Fabfilter Bundle, iZotope Bundle', 'Moog, Roland, Nord Lead', 'Neumann', 'ROAD PRINCE');
+            PKG_RECORDINGSTUDIOS.ADD_EQUIPMENT('NEVE', 'Barefoot', 'Distressor, Universal Audio', 'Ableton', 'UAD Bundle, Fabfilter Bundle, Waves Bundle', 'Moog, Roland', 'Shure', 'FILTH ON ACID');
+            PKG_RECORDINGSTUDIOS.ADD_EQUIPMENT('AVID', 'Adam', 'Distressor, Fairchild compressors, Pultec', 'Ableton', 'iZotope Bundle, Waves Bundle, Fabfilter Bundle', 'Roland, Prophet', NULL, 'BEYER');
+            PKG_RECORDINGSTUDIOS.ADD_EQUIPMENT('API', 'Focal', 'LA-2A compressor, 1176 compressor, Fairchild comp', 'Logic', 'Melodyne, Waves Bundle, iZotope Bundle', 'Nord Lead, Prophet, Oberheimer, Moog, Roland','Sony', 'ATLANTIS');
+            PKG_RECORDINGSTUDIOS.ADD_EQUIPMENT('SSL', 'Genelec', 'LA-2A compressor, Universal Audio, 1176 compressor', 'ProTools', 'Melodyne, UAD Bundle, iZotope Bundle', 'Nord Lead, Yamaha, Prophet, Moog', 'Neumann', 'MICHAEL');
+
+            PKG_RECORDINGSTUDIOS.ADD_BOOKING(TO_DATE('2023-03-15', 'YYYY-MM-DD'), EXTRACT(HOUR FROM TIMESTAMP '2023-03-15 10:00:00'), EXTRACT(HOUR FROM TIMESTAMP '2023-03-15 12:00:00'), 'THE WEEKND', 'ROAD PRINCE', 'ABBEY ROAD');
+            PKG_RECORDINGSTUDIOS.ADD_BOOKING(TO_DATE('2023-04-06', 'YYYY-MM-DD'), EXTRACT(HOUR FROM TIMESTAMP '2023-04-06 13:00:00'), EXTRACT(HOUR FROM TIMESTAMP '2023-04-06 17:00:00'), 'REINIER ZONNEVELD', 'FILTH ON ACID', 'THE WAREHOUSE STUDIOS');
+            PKG_RECORDINGSTUDIOS.ADD_BOOKING(TO_DATE('2023-04-13', 'YYYY-MM-DD'), EXTRACT(HOUR FROM TIMESTAMP '2023-04-13 09:00:00'), EXTRACT(HOUR FROM TIMESTAMP '2023-04-13 12:00:00'), 'ELI BROWN', 'BEYER', 'DRUMCODE STUDIOS');
+            PKG_RECORDINGSTUDIOS.ADD_BOOKING(TO_DATE('2023-03-28', 'YYYY-MM-DD'), EXTRACT(HOUR FROM TIMESTAMP '2023-03-28 14:00:00'), EXTRACT(HOUR FROM TIMESTAMP '2023-03-28 16:00:00'), 'SG LEWIS', 'ATLANTIS', 'VALHALLA RECORDING STUDIOS');
+            PKG_RECORDINGSTUDIOS.ADD_BOOKING(TO_DATE('2023-05-02', 'YYYY-MM-DD'), EXTRACT(HOUR FROM TIMESTAMP '2023-05-02 15:00:00'), EXTRACT(HOUR FROM TIMESTAMP '2023-05-02 18:00:00'), 'DRAKE', 'MICHAEL', 'UNIVERSAL STUDIOS');
+
+            PKG_RECORDINGSTUDIOS.add_artist_recstudio_rel('THE WEEKND','ABBEY ROAD');
+            PKG_RECORDINGSTUDIOS.add_artist_recstudio_rel('REINIER ZONNEVELD','THE WAREHOUSE STUDIOS');
+            PKG_RECORDINGSTUDIOS.add_artist_recstudio_rel('ELI BROWN','DRUMCODE STUDIOS');
+            PKG_RECORDINGSTUDIOS.add_artist_recstudio_rel('SG LEWIS','VALHALLA RECORDING STUDIOS');
+            PKG_RECORDINGSTUDIOS.add_artist_recstudio_rel('DRAKE','UNIVERSAL STUDIOS');
+        END manueel_m4;
 
 
 END PKG_recordingstudios;

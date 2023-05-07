@@ -86,5 +86,7 @@ AS
 
         PROCEDURE bewijs_milestone_5;
 
+        PROCEDURE manueel_m4;
+
 END PKG_recordingstudios;
 /
