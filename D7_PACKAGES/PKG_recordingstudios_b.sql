@@ -328,8 +328,7 @@ AS
         p_software          equipment.software%TYPE,
         p_synths            equipment.synths%TYPE,
         p_vocal_mic         equipment.vocal_mic%TYPE,
-        p_room_name         rooms.room_name%TYPE,
-        p_rec_stu_name      recording_studios.studio_name%TYPE)
+        p_room_name         rooms.room_name%TYPE)
     AS
         v_room_id ROOMS.room_code%TYPE;
         v_recstu_id ROOMS.RECORDING_STUDIOS_STUDIO_CODE%TYPE;
@@ -555,8 +554,7 @@ AS
                                 v_software,
                                 v_synths,
                                 v_vocal_mic,
-                                v_room_name,
-                                v_rec_stu_name);
+                                v_room_name);
                             v_count := v_count + 1;
                             END LOOP;
                     END LOOP;

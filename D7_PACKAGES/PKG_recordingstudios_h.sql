@@ -27,8 +27,7 @@ AS
             p_software          equipment.software%TYPE,
             p_synths            equipment.synths%TYPE,
             p_vocal_mic         equipment.vocal_mic%TYPE,
-            p_room_name         rooms.room_name%TYPE,
-            p_rec_stu_name      recording_studios.studio_name%TYPE);
+            p_room_name         rooms.room_name%TYPE);
 
         PROCEDURE add_recording_studio
         (   p_studio_name       recording_studios.studio_name%TYPE,

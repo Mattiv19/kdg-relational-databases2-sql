@@ -4,11 +4,6 @@ BEGIN
 END;
 
 
-
-SELECT * FROM EQUIPMENT;
-
-SELECT upper(STUDIO_NAME) FROM RECORDING_STUDIOS;
-
 BEGIN
 
     PKG_recordingstudios.ADD_ARTIST('The Weeknd', 'Pop', 'Singer', TO_DATE('16-02-1990'), 0478031245, 'theweeknd@gmail.com');
@@ -28,11 +23,11 @@ BEGIN
     PKG_RECORDINGSTUDIOS.ADD_ROOM('Atlantis', 92.52, 135, 1, 1, 'VALHALLA RECORDING STUDIOS');
     PKG_RECORDINGSTUDIOS.ADD_ROOM('Michael',103.59, 185, 1, 1, 'UNIVERSAL STUDIOS');
 
-    PKG_RECORDINGSTUDIOS.ADD_EQUIPMENT('SSL', 'Dynaudio', 'LA-2A compressor, 1176 compressor, Pultec', 'ProTools', 'Melodyne, Fabfilter Bundle, iZotope Bundle', 'Moog, Roland, Nord Lead', 'Neumann', 'ROAD PRINCE', 'ABBEY ROAD');
-    PKG_RECORDINGSTUDIOS.ADD_EQUIPMENT('NEVE', 'Barefoot', 'Distressor, Universal Audio', 'Ableton', 'UAD Bundle, Fabfilter Bundle, Waves Bundle', 'Moog, Roland', 'Shure', 'FILTH ON ACID', 'THE WAREHOUSE STUDIOS');
-    PKG_RECORDINGSTUDIOS.ADD_EQUIPMENT('AVID', 'Adam', 'Distressor, Fairchild compressors, Pultec', 'Ableton', 'iZotope Bundle, Waves Bundle, Fabfilter Bundle', 'Roland, Prophet', NULL, 'BEYER', 'DRUMCODE STUDIOS');
-    PKG_RECORDINGSTUDIOS.ADD_EQUIPMENT('API', 'Focal', 'LA-2A compressor, 1176 compressor, Fairchild comp', 'Logic', 'Melodyne, Waves Bundle, iZotope Bundle', 'Nord Lead, Prophet, Oberheimer, Moog, Roland','Sony', 'ATLANTIS', 'VALHALLA RECORDING STUDIOS');
-    PKG_RECORDINGSTUDIOS.ADD_EQUIPMENT('SSL', 'Genelec', 'LA-2A compressor, Universal Audio, 1176 compressor', 'ProTools', 'Melodyne, UAD Bundle, iZotope Bundle', 'Nord Lead, Yamaha, Prophet, Moog', 'Neumann', 'MICHAEL', 'UNIVERSAL STUDIOS');
+    PKG_RECORDINGSTUDIOS.ADD_EQUIPMENT('SSL', 'Dynaudio', 'LA-2A compressor, 1176 compressor, Pultec', 'ProTools', 'Melodyne, Fabfilter Bundle, iZotope Bundle', 'Moog, Roland, Nord Lead', 'Neumann', 'ROAD PRINCE');
+    PKG_RECORDINGSTUDIOS.ADD_EQUIPMENT('NEVE', 'Barefoot', 'Distressor, Universal Audio', 'Ableton', 'UAD Bundle, Fabfilter Bundle, Waves Bundle', 'Moog, Roland', 'Shure', 'FILTH ON ACID');
+    PKG_RECORDINGSTUDIOS.ADD_EQUIPMENT('AVID', 'Adam', 'Distressor, Fairchild compressors, Pultec', 'Ableton', 'iZotope Bundle, Waves Bundle, Fabfilter Bundle', 'Roland, Prophet', NULL, 'BEYER');
+    PKG_RECORDINGSTUDIOS.ADD_EQUIPMENT('API', 'Focal', 'LA-2A compressor, 1176 compressor, Fairchild comp', 'Logic', 'Melodyne, Waves Bundle, iZotope Bundle', 'Nord Lead, Prophet, Oberheimer, Moog, Roland','Sony', 'ATLANTIS');
+    PKG_RECORDINGSTUDIOS.ADD_EQUIPMENT('SSL', 'Genelec', 'LA-2A compressor, Universal Audio, 1176 compressor', 'ProTools', 'Melodyne, UAD Bundle, iZotope Bundle', 'Nord Lead, Yamaha, Prophet, Moog', 'Neumann', 'MICHAEL');
 
     PKG_RECORDINGSTUDIOS.ADD_BOOKING(TO_DATE('2023-03-15', 'YYYY-MM-DD'), EXTRACT(HOUR FROM TIMESTAMP '2023-03-15 10:00:00'), EXTRACT(HOUR FROM TIMESTAMP '2023-03-15 12:00:00'), 'THE WEEKND', 'ROAD PRINCE', 'ABBEY ROAD');
     PKG_RECORDINGSTUDIOS.ADD_BOOKING(TO_DATE('2023-04-06', 'YYYY-MM-DD'), EXTRACT(HOUR FROM TIMESTAMP '2023-04-06 13:00:00'), EXTRACT(HOUR FROM TIMESTAMP '2023-04-06 17:00:00'), 'REINIER ZONNEVELD', 'FILTH ON ACID', 'THE WAREHOUSE STUDIOS');
