@@ -57,6 +57,7 @@ ALTER TABLE bookings ADD CONSTRAINT bookings_pk PRIMARY KEY ( res_code );
 CREATE TABLE equipment (
     equipment_code  INTEGER GENERATED ALWAYS AS IDENTITY,
     rentperhour     NUMBER(3),  --M6
+    equipmentname   VARCHAR2(30 CHAR),  --M6
     mixing_console  VARCHAR2(4 CHAR),
     monitors        VARCHAR2(10 CHAR),
     hardware        VARCHAR2(50),

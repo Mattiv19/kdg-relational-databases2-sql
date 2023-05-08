@@ -21,6 +21,7 @@ AS
 
         PROCEDURE add_equipment
         (   p_rentperhour       equipment.rentperhour%TYPE, -- M6
+            p_equipmentname     equipment.equipmentname%TYPE, -- M6
             p_mixing_console    equipment.mixing_console%TYPE,
             p_monitors          equipment.monitors%TYPE,
             p_hardware          equipment.hardware%TYPE,

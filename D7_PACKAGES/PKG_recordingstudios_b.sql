@@ -322,6 +322,7 @@ AS
 
     PROCEDURE add_equipment
     (   p_rentperhour       equipment.rentperhour%TYPE, --M6
+        p_equipmentname     equipment.equipmentname%TYPE,
         p_mixing_console    equipment.mixing_console%TYPE,
         p_monitors          equipment.monitors%TYPE,
         p_hardware          equipment.hardware%TYPE,
@@ -340,8 +341,8 @@ AS
             -- DBMS_OUTPUT.PUT_LINE(v_room_id);
             v_recstu_id := lookup_recording_studio_room(p_room_name);
             -- DBMS_OUTPUT.PUT_LINE(v_recstu_id);
-            INSERT INTO EQUIPMENT(rentperhour, mixing_console, monitors, hardware, daw, software, synths, vocal_mic, rooms_room_code, ro_rec_stu_code)
-            VALUES (p_rentperhour, p_mixing_console, p_monitors, p_hardware, p_daw, p_software, p_synths, p_vocal_mic, v_room_id, v_recstu_id);
+            INSERT INTO EQUIPMENT(rentperhour,equipmentname, mixing_console, monitors, hardware, daw, software, synths, vocal_mic, rooms_room_code, ro_rec_stu_code)
+            VALUES (p_rentperhour, p_equipmentname, p_mixing_console, p_monitors, p_hardware, p_daw, p_software, p_synths, p_vocal_mic, v_room_id, v_recstu_id);
             COMMIT;
             -- DBMS_OUTPUT.PUT_LINE('The equipment was added successfully to the database.');
         END add_equipment;
@@ -479,7 +480,7 @@ AS
             LOOP
                 FOR j in 1 ..p_count
                     LOOP
-                    v_room_name := 'Room_' || i || '_'|| J;
+                    v_room_name := 'Room_' || i || '_'|| j;
                     v_area_insqm := random_number(1000, 49999)/100;
                     v_costperhour := random_number(10, 199);
                     -- DBMS_OUTPUT.PUT_LINE(v_costperhour);
@@ -510,6 +511,7 @@ AS
         v_room_names         type_room_name;
         v_studio_names       type_studio_name;
         v_rentperhour       equipment.rentperhour%TYPE;
+        v_equipmentname     equipment.equipmentname%TYPE;
         v_mixing_console    equipment.mixing_console%TYPE;
         v_monitors          equipment.monitors%TYPE;
         v_hardware          equipment.hardware%TYPE;
@@ -531,6 +533,7 @@ AS
                         FOR z in 1 ..p_count_equipment
                             LOOP
                             v_rentperhour := random_number(10,199);
+                            v_equipmentname := 'Equipment_' || i || '_' || j || '_' || z;
                             v_mixing_console := random_mixing_console();
                             -- DBMS_OUTPUT.PUT_LINE(v_mixing_console);
                             v_monitors := random_monitors();
@@ -551,6 +554,7 @@ AS
                             -- DBMS_OUTPUT.PUT_LINE(v_rec_stu_name);
 
                             add_equipment(v_rentperhour,
+                                v_equipmentname,
                                 v_mixing_console,
                                 v_monitors,
                                 v_hardware,
@@ -655,11 +659,11 @@ AS
             PKG_RECORDINGSTUDIOS.ADD_ROOM('Atlantis', 92.52, 135, 1, 1, 'VALHALLA RECORDING STUDIOS');
             PKG_RECORDINGSTUDIOS.ADD_ROOM('Michael',103.59, 185, 1, 1, 'UNIVERSAL STUDIOS');
 
-            PKG_RECORDINGSTUDIOS.ADD_EQUIPMENT(53,'SSL', 'Dynaudio', 'LA-2A compressor, 1176 compressor, Pultec', 'ProTools', 'Melodyne, Fabfilter Bundle, iZotope Bundle', 'Moog, Roland, Nord Lead', 'Neumann', 'ROAD PRINCE');
-            PKG_RECORDINGSTUDIOS.ADD_EQUIPMENT(76,'NEVE', 'Barefoot', 'Distressor, Universal Audio', 'Ableton', 'UAD Bundle, Fabfilter Bundle, Waves Bundle', 'Moog, Roland', 'Shure', 'FILTH ON ACID');
-            PKG_RECORDINGSTUDIOS.ADD_EQUIPMENT(105,'AVID', 'Adam', 'Distressor, Fairchild compressors, Pultec', 'Ableton', 'iZotope Bundle, Waves Bundle, Fabfilter Bundle', 'Roland, Prophet', NULL, 'BEYER');
-            PKG_RECORDINGSTUDIOS.ADD_EQUIPMENT(127,'API', 'Focal', 'LA-2A compressor, 1176 compressor, Fairchild comp', 'Logic', 'Melodyne, Waves Bundle, iZotope Bundle', 'Nord Lead, Prophet, Oberheimer, Moog, Roland','Sony', 'ATLANTIS');
-            PKG_RECORDINGSTUDIOS.ADD_EQUIPMENT(178,'SSL', 'Genelec', 'LA-2A compressor, Universal Audio, 1176 compressor', 'ProTools', 'Melodyne, UAD Bundle, iZotope Bundle', 'Nord Lead, Yamaha, Prophet, Moog', 'Neumann', 'MICHAEL');
+            PKG_RECORDINGSTUDIOS.ADD_EQUIPMENT(53, 'equipment_001','SSL', 'Dynaudio', 'LA-2A compressor, 1176 compressor, Pultec', 'ProTools', 'Melodyne, Fabfilter Bundle, iZotope Bundle', 'Moog, Roland, Nord Lead', 'Neumann', 'ROAD PRINCE');
+            PKG_RECORDINGSTUDIOS.ADD_EQUIPMENT(76,'equipment_002','NEVE', 'Barefoot', 'Distressor, Universal Audio', 'Ableton', 'UAD Bundle, Fabfilter Bundle, Waves Bundle', 'Moog, Roland', 'Shure', 'FILTH ON ACID');
+            PKG_RECORDINGSTUDIOS.ADD_EQUIPMENT(105,'equipment_003','AVID', 'Adam', 'Distressor, Fairchild compressors, Pultec', 'Ableton', 'iZotope Bundle, Waves Bundle, Fabfilter Bundle', 'Roland, Prophet', NULL, 'BEYER');
+            PKG_RECORDINGSTUDIOS.ADD_EQUIPMENT(127,'equipment_004', 'API', 'Focal', 'LA-2A compressor, 1176 compressor, Fairchild comp', 'Logic', 'Melodyne, Waves Bundle, iZotope Bundle', 'Nord Lead, Prophet, Oberheimer, Moog, Roland','Sony', 'ATLANTIS');
+            PKG_RECORDINGSTUDIOS.ADD_EQUIPMENT(178,'equipment_005','SSL', 'Genelec', 'LA-2A compressor, Universal Audio, 1176 compressor', 'ProTools', 'Melodyne, UAD Bundle, iZotope Bundle', 'Nord Lead, Yamaha, Prophet, Moog', 'Neumann', 'MICHAEL');
 
             PKG_RECORDINGSTUDIOS.ADD_BOOKING(TO_DATE('2023-03-15', 'YYYY-MM-DD'), EXTRACT(HOUR FROM TIMESTAMP '2023-03-15 10:00:00'), EXTRACT(HOUR FROM TIMESTAMP '2023-03-15 12:00:00'), 'THE WEEKND', 'ROAD PRINCE', 'ABBEY ROAD');
             PKG_RECORDINGSTUDIOS.ADD_BOOKING(TO_DATE('2023-04-06', 'YYYY-MM-DD'), EXTRACT(HOUR FROM TIMESTAMP '2023-04-06 13:00:00'), EXTRACT(HOUR FROM TIMESTAMP '2023-04-06 17:00:00'), 'REINIER ZONNEVELD', 'FILTH ON ACID', 'THE WAREHOUSE STUDIOS');
@@ -675,6 +679,48 @@ AS
         END manueel_m4;
 
     -- Milestone 6
+    PROCEDURE printreport_2_levels_m6(p_x IN NUMBER, p_y IN NUMBER, p_z IN NUMBER)
+        IS
+            CURSOR cursor_z(p_roomID IN NUMBER) IS
+                SELECT equipment_code, r.room_code, equipmentname, rentperhour
+                FROM EQUIPMENT e
+                    JOIN ROOMS r ON r.ROOM_CODE = e.ROOMS_ROOM_CODE
+                WHERE r.ROOM_CODE = p_roomID;
+            CURSOR cursor_y(p_studioID IN NUMBER) IS
+                SELECT r.room_code, r.room_name, AVG(e.rentperhour) AS "Average Rentperhour / Room"
+                FROM ROOMS r
+                    JOIN EQUIPMENT e on r.ROOM_CODE = e.ROOMS_ROOM_CODE
+                    JOIN RECORDING_STUDIOS s on r.RECORDING_STUDIOS_STUDIO_CODE = s.STUDIO_CODE
+                WHERE s.STUDIO_CODE = p_studioID
+                GROUP BY r.room_code, r.room_name;
+            CURSOR cursor_x IS
+                SELECT STUDIO_CODE, STUDIO_NAME, AVG(e.rentperhour) AS "Average Rentperhour / Studio"
+                FROM RECORDING_STUDIOS s
+                    JOIN ROOMS r ON s.STUDIO_CODE = r.RECORDING_STUDIOS_STUDIO_CODE
+                    JOIN EQUIPMENT e ON e.ROOMS_ROOM_CODE = r.ROOM_CODE
+                GROUP BY STUDIO_CODE, STUDIO_NAME;
+
+            exc_negative_number EXCEPTION;
+        BEGIN
+            IF p_x <  0 OR p_y < 0 OR p_z < 0
+            THEN
+                raise exc_negative_number;
+            END IF;
+            FOR c_x IN cursor_x
+                LOOP
+                    DBMS_OUTPUT.PUT_LINE('------------------------------------------------------------');
+                    DBMS_OUTPUT.PUT_LINE('|      StudioCode     |        Studio_Name      | Average Rentperhour / Studio  |');
+                    DBMS_OUTPUT.PUT_LINE('------------------------------------------------------------');
+                    DBMS_OUTPUT.PUT_LINE('|    ' || c_x.STUDIO_CODE || '   |   ' || c_x.STUDIO_NAME || '    |   ' || c_x."Average Rentperhour / Studio" || '  |');
+
+                    FOR c_y IN cursor_y(c_x.STUDIO_CODE)
+                        LOOP
+                            DBMS_OUTPUT.PUT_LINE('|      StudioCode     |        Studio_Name      | Average Rentperhour / Studio  |'')')
+                        end loop;
+
+                END LOOP;
+
+
 
 END PKG_recordingstudios;
 
