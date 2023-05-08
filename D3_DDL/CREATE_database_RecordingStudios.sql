@@ -56,6 +56,7 @@ ALTER TABLE bookings ADD CONSTRAINT bookings_pk PRIMARY KEY ( res_code );
 
 CREATE TABLE equipment (
     equipment_code  INTEGER GENERATED ALWAYS AS IDENTITY,
+    rentperhour     NUMBER(3),  --M6
     mixing_console  VARCHAR2(4 CHAR),
     monitors        VARCHAR2(10 CHAR),
     hardware        VARCHAR2(50),
@@ -66,6 +67,9 @@ CREATE TABLE equipment (
     rooms_room_code INTEGER NOT NULL,
     ro_rec_stu_code INTEGER NOT NULL
 );
+
+--M6
+ALTER TABLE equipment ADD CHECK ( rentperhour BETWEEN 1 AND 200 );
 
 ALTER TABLE equipment
     ADD CHECK ( mixing_console IN ( 'API', 'AVID', 'NEVE', 'SSL' ) );
