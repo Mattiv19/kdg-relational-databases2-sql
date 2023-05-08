@@ -711,30 +711,29 @@ AS
                 DBMS_OUTPUT.PUT_LINE('------------------------------------------------------------------------------------------');
                 DBMS_OUTPUT.PUT_LINE('|      StudioCode       |        Studio_Name      |    Average Rentperhour / Studio    |  ');
                 DBMS_OUTPUT.PUT_LINE('------------------------------------------------------------------------------------------');
-                DBMS_OUTPUT.PUT_LINE('|          ' || c_x.STUDIO_CODE || '          |   ' || c_x.STUDIO_NAME || '    |   ' || round(c_x."Average Rentperhour / Studio", 2) || '  |');
-
+                DBMS_OUTPUT.PUT_LINE('|          ' || c_x.STUDIO_CODE || '           |   ' || c_x.STUDIO_NAME || '   |               ' || round(c_x."Average Rentperhour / Studio", 2) || '              |');
+                DBMS_OUTPUT.PUT_LINE('------------------------------------------------------------------------------------------');
                 FOR c_y IN cursor_y(c_x.STUDIO_CODE)
                     LOOP
-                        DBMS_OUTPUT.PUT_LINE('|      RoomCode     |        Room_Name      | Average Rentperhour / Room  |'')');
-                        DBMS_OUTPUT.PUT_LINE('---------------------------------------------------------------------------------');
-                        DBMS_OUTPUT.PUT_LINE((lpad(c_y.ROOM_CODE, 12, ' ')) || ' ' ||
-                                             lpad(c_y.ROOM_NAME, 22, ' ') || '     ' ||
-                                             lpad(round(c_y."Average Rentperhour / Room", 2),  14,  ' '));
-                        DBMS_OUTPUT.PUT_LINE('------------------------------------------------------------');
-                        DBMS_OUTPUT.PUT_LINE('|     EquipmentCode     |'  ||  '|      Room_code     ' || '|      EquipmentName     ' || '     Rent per hour    ');
-                        DBMS_OUTPUT.PUT_LINE('-----------------------------------------------------------------------------------------');
+                        DBMS_OUTPUT.PUT_LINE('     ');
+                        DBMS_OUTPUT.PUT_LINE('|      RoomCode     |        Room_Name      | Average Rentperhour / Room  |');
+                        DBMS_OUTPUT.PUT_LINE('-------------------------------------------------------------------------------------------------');
+                        DBMS_OUTPUT.PUT_LINE('|        ' || c_y.ROOM_CODE || '        |       ' || c_y.ROOM_NAME || '       |            ' || round(c_y."Average Rentperhour / Room") || '                | ');
+                        DBMS_OUTPUT.PUT_LINE('-------------------------------------------------------------------------------------------------');
+                        DBMS_OUTPUT.PUT_LINE('     ');
+                        DBMS_OUTPUT.PUT_LINE('|     EquipmentCode     |      Room_code     |      EquipmentName     |    Rent per hour    |');
+                        DBMS_OUTPUT.PUT_LINE('----------------------------------------------------------------------------------------------');
                         FOR c_z IN cursor_z(c_y.ROOM_CODE)
                             LOOP
-                                DBMS_OUTPUT.PUT_LINE(
-                                            lpad(c_z.EQUIPMENT_CODE, 12, ' ') || '    ' ||
-                                            lpad(c_z.ROOM_CODE, 12, ' ') || '    ' ||
-                                            lpad(c_z.EQUIPMENTNAME, 25, ' ') || '     ' ||
-                                            lpad(c_z.RENTPERHOUR, 20, ' '));
+                                DBMS_OUTPUT.PUT_LINE('|        ' || c_z.EQUIPMENT_CODE || '          |         ' || c_z.ROOM_CODE || '         |     ' || c_z.EQUIPMENTNAME || '   |         ' || c_z.RENTPERHOUR || '         | ');
                                 EXIT WHEN cursor_z%rowcount >= p_z;
                             END LOOP;
                         EXIT WHEN cursor_y%rowcount >= p_y;
+                        DBMS_OUTPUT.PUT_LINE('     ');
                     END LOOP;
-                DBMS_OUTPUT.PUT_LINE('------------------------------------------------------------');
+                DBMS_OUTPUT.PUT_LINE('----------------------------------------------------------------------------------------------------------');
+                DBMS_OUTPUT.PUT_LINE('----------------------------------------------------------------------------------------------------------');
+                DBMS_OUTPUT.PUT_LINE('----------------------------------------------------------------------------------------------------------');
                 DBMS_OUTPUT.PUT_LINE('     ');
                 DBMS_OUTPUT.PUT_LINE('     ');
                 EXIT WHEN cursor_x%rowcount >= p_x;
