@@ -3,7 +3,9 @@ BEGIN
     PKG_RECORDINGSTUDIOS.bewijs_milestone_5();
 END;
 
-SELECT * from EQUIPMENT;
+BEGIN
+    PKG_RECORDINGSTUDIOS.printreport_2_levels_m6(3, 2,5);
+END;
 
 BEGIN
     PKG_recordingstudios.empty_tables();

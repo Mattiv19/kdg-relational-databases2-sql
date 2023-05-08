@@ -90,5 +90,7 @@ AS
 
         PROCEDURE manueel_m4;
 
+        PROCEDURE printreport_2_levels_m6(p_x IN NUMBER, p_y IN NUMBER, p_z IN NUMBER);
+
 END PKG_recordingstudios;
 /

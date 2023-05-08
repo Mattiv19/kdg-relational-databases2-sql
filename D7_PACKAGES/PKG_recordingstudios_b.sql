@@ -46,7 +46,7 @@ AS
     END lookup_room;
 
     FUNCTION lookup_recording_studio_room
-        (p_room_name    rooms.room_name%TYPE)
+    (p_room_name    rooms.room_name%TYPE)
         RETURN INTEGER
     AS
         lo_studio_code_room INTEGER;
@@ -64,44 +64,44 @@ AS
     -- PRIVATE FUNCTIONS M5
     -- Random Functions M5 --
     FUNCTION random_number
-        (p_min  NUMERIC,
-         p_max  NUMERIC)
+    (p_min  NUMERIC,
+     p_max  NUMERIC)
         RETURN NUMERIC
     AS
-        BEGIN
-            RETURN TRUNC(DBMS_RANDOM.VALUE(p_min,p_max));
-        END random_number;
+    BEGIN
+        RETURN TRUNC(DBMS_RANDOM.VALUE(p_min,p_max));
+    END random_number;
 
     FUNCTION random_date
-        (p_from  DATE,
-         p_till  DATE)
+    (p_from  DATE,
+     p_till  DATE)
         RETURN DATE
     AS
         ln_range NUMERIC;
         ln_datepick NUMERIC;
-        BEGIN
-            ln_range := p_till-p_from;
-            ln_datepick := random_number(0, ln_range);
-            RETURN p_from+ln_datepick;
-        END random_date;
+    BEGIN
+        ln_range := p_till-p_from;
+        ln_datepick := random_number(0, ln_range);
+        RETURN p_from+ln_datepick;
+    END random_date;
 
     FUNCTION random_music_genre
         RETURN artists.music_genre%TYPE
         IS
         TYPE type_varray_type IS VARRAY(7) OF VARCHAR2(30);
         t_type type_varray_type  := type_varray_type('Pop', 'Techno', 'House','Disco', 'Rap', 'Rock', 'Jazz');
-        BEGIN
-            RETURN t_type(random_number(1,t_type.COUNT));
-        END random_music_genre;
+    BEGIN
+        RETURN t_type(random_number(1,t_type.COUNT));
+    END random_music_genre;
 
     FUNCTION random_profession
         RETURN artists.profession%TYPE
         IS
         TYPE type_varray_type IS VARRAY (5) OF VARCHAR2(50);
         t_type type_varray_type := type_varray_type('Singer', 'Producer', 'Instrumentalist', 'Audio engineer', 'Composer');
-        BEGIN
-            RETURN t_type(random_number(1, t_type.COUNT));
-        END random_profession;
+    BEGIN
+        RETURN t_type(random_number(1, t_type.COUNT));
+    END random_profession;
 
     FUNCTION random_phonenumber
         RETURN NUMBER
@@ -109,19 +109,19 @@ AS
         v_start_number  NUMBER(9);
         v_random_phone  NUMBER(7);
         v_phonenumber   NUMBER(9);
-        BEGIN
-            IF random_number(0,1) <  0.5 THEN
-                v_start_number := 470000000;
-            ELSE
-                v_start_number := 4900000000;
-            END if;
+    BEGIN
+        IF random_number(0,1) <  0.5 THEN
+            v_start_number := 470000000;
+        ELSE
+            v_start_number := 4900000000;
+        END if;
 
-            v_random_phone := TRUNC(random_number(1000000,9999999));
+        v_random_phone := TRUNC(random_number(1000000,9999999));
 
-            v_phonenumber := v_start_number + v_random_phone;
+        v_phonenumber := v_start_number + v_random_phone;
 
-            RETURN v_phonenumber;
-        END random_phonenumber;
+        RETURN v_phonenumber;
+    END random_phonenumber;
 
     FUNCTION random_straat
         RETURN VARCHAR2
@@ -129,28 +129,28 @@ AS
         TYPE type_varray_type IS VARRAY (20) OF VARCHAR(39);
         t_type type_varray_type := type_varray_type('Molen', 'Kerk', 'Nieuw', 'School', 'Veld', 'Station', 'Kapel', 'Diamant', 'Heide', 'Koning', 'Prins', 'Winkel', 'Schelde', 'Hoeve', 'Beek', 'Appel', 'Sint-Jozef', 'Maria',  'Zand', 'Muziek');
         v_random_straat VARCHAR2(45);
-        BEGIN
-            v_random_straat := t_type(random_number(1, t_type.COUNT)) || 'straat';
-            RETURN v_random_straat;
-        END random_straat;
+    BEGIN
+        v_random_straat := t_type(random_number(1, t_type.COUNT)) || 'straat';
+        RETURN v_random_straat;
+    END random_straat;
 
     FUNCTION random_location
         RETURN recording_studios.location%TYPE
         IS
         TYPE type_varray_type IS VARRAY (20) OF VARCHAR2(50);
         t_type type_varray_type := type_varray_type('ANTWERPEN', 'BRUSSEL', 'GENT', 'BRUGGE', 'HASSELT', 'GENK', 'WIJNEGEM', 'KORTRIJK', 'GERAARDSBERGEN', 'MECHELEN', 'LIER', 'KNOKKE', 'LEUVEN', 'SINT-NIKLAAS', 'LUIK', 'AALST', 'HERENTALS', 'TURNHOUT', 'AARSCHOT', 'MORTSEL');
-        BEGIN
-            RETURN t_type(random_number(1, t_type.COUNT));
-        END random_location;
+    BEGIN
+        RETURN t_type(random_number(1, t_type.COUNT));
+    END random_location;
 
     FUNCTION random_mixing_console
         RETURN equipment.mixing_console%TYPE
         IS
         TYPE type_varray_type IS VARRAY (4) OF VARCHAR2(4);
         t_type type_varray_type := type_varray_type('API', 'AVID', 'NEVE', 'SSL');
-        BEGIN
-            RETURN t_type(random_number(1, t_type.COUNT));
-        END random_mixing_console;
+    BEGIN
+        RETURN t_type(random_number(1, t_type.COUNT));
+    END random_mixing_console;
 
     FUNCTION random_monitors
         RETURN equipment.monitors%TYPE
@@ -210,13 +210,13 @@ AS
         RETURN STRING
     AS
         TYPE t_artistnames IS TABLE OF ARTISTS.name%TYPE;
-            v_artistnames   t_artistnames;
-            v_artistname    ARTISTS.name%TYPE;
+        v_artistnames   t_artistnames;
+        v_artistname    ARTISTS.name%TYPE;
     BEGIN
         SELECT NAME BULK COLLECT INTO v_artistnames FROM ARTISTS;
         v_artistname := random_number(1, v_artistnames.COUNT);
         RETURN v_artistnames(v_artistname);
-     END random_artistname;
+    END random_artistname;
 
     FUNCTION random_studio_name
         RETURN STRING
@@ -259,18 +259,18 @@ AS
     PROCEDURE empty_tables
     AS
     BEGIN
-            EXECUTE IMMEDIATE 'TRUNCATE TABLE ARTISTS_RECSTUDIOS_RELATION';
-            EXECUTE IMMEDIATE 'TRUNCATE TABLE BOOKINGS';
-            EXECUTE IMMEDIATE 'TRUNCATE TABLE EQUIPMENT';
-            EXECUTE IMMEDIATE 'TRUNCATE TABLE ROOMS';
-            EXECUTE IMMEDIATE 'TRUNCATE TABLE ARTISTS';
-            EXECUTE IMMEDIATE 'TRUNCATE TABLE RECORDING_STUDIOS';
+        EXECUTE IMMEDIATE 'TRUNCATE TABLE ARTISTS_RECSTUDIOS_RELATION';
+        EXECUTE IMMEDIATE 'TRUNCATE TABLE BOOKINGS';
+        EXECUTE IMMEDIATE 'TRUNCATE TABLE EQUIPMENT';
+        EXECUTE IMMEDIATE 'TRUNCATE TABLE ROOMS';
+        EXECUTE IMMEDIATE 'TRUNCATE TABLE ARTISTS';
+        EXECUTE IMMEDIATE 'TRUNCATE TABLE RECORDING_STUDIOS';
 
-            EXECUTE IMMEDIATE 'ALTER TABLE BOOKINGS MODIFY RES_CODE GENERATED ALWAYS AS IDENTITY (START WITH 1)';
-            EXECUTE IMMEDIATE 'ALTER TABLE ROOMS MODIFY ROOM_CODE GENERATED ALWAYS AS IDENTITY (START WITH 1)';
-            EXECUTE IMMEDIATE 'ALTER TABLE ARTISTS MODIFY ARTIST_ID GENERATED ALWAYS AS IDENTITY (START WITH 1)';
-            EXECUTE IMMEDIATE 'ALTER TABLE RECORDING_STUDIOS MODIFY STUDIO_CODE GENERATED ALWAYS AS IDENTITY (START WITH 1)';
-        END empty_tables;
+        EXECUTE IMMEDIATE 'ALTER TABLE BOOKINGS MODIFY RES_CODE GENERATED ALWAYS AS IDENTITY (START WITH 1)';
+        EXECUTE IMMEDIATE 'ALTER TABLE ROOMS MODIFY ROOM_CODE GENERATED ALWAYS AS IDENTITY (START WITH 1)';
+        EXECUTE IMMEDIATE 'ALTER TABLE ARTISTS MODIFY ARTIST_ID GENERATED ALWAYS AS IDENTITY (START WITH 1)';
+        EXECUTE IMMEDIATE 'ALTER TABLE RECORDING_STUDIOS MODIFY STUDIO_CODE GENERATED ALWAYS AS IDENTITY (START WITH 1)';
+    END empty_tables;
 
     PROCEDURE add_artist
     (   p_artist_name   artists.name%TYPE,
@@ -280,12 +280,12 @@ AS
         p_phone_artist  artists.phone_artist%TYPE,
         p_email_artist  artists.email_artist%TYPE)
     AS
-        BEGIN
-            INSERT INTO ARTISTS (name, music_genre, profession, birth_date, phone_artist, email_artist)
-            VALUES (p_artist_name, p_music_genre, p_profession, p_birth_date, p_phone_artist, p_email_artist);
-            COMMIT;
-            -- DBMS_OUTPUT.PUT_LINE('The artist with the name ' || p_artist_name || ' was successfully added to the database.');
-        END add_artist;
+    BEGIN
+        INSERT INTO ARTISTS (name, music_genre, profession, birth_date, phone_artist, email_artist)
+        VALUES (p_artist_name, p_music_genre, p_profession, p_birth_date, p_phone_artist, p_email_artist);
+        COMMIT;
+        -- DBMS_OUTPUT.PUT_LINE('The artist with the name ' || p_artist_name || ' was successfully added to the database.');
+    END add_artist;
 
     PROCEDURE add_recording_studio
     (   p_studio_name       recording_studios.studio_name%TYPE,
@@ -295,12 +295,12 @@ AS
         p_email_studio      recording_studios.email_studio%TYPE,
         p_local_engineer    recording_studios.local_engineer%TYPE)
     AS
-        BEGIN
-            INSERT INTO RECORDING_STUDIOS (STUDIO_NAME, ADDRESS, LOCATION, PHONE_STUDIO, EMAIL_STUDIO, LOCAL_ENGINEER)
-            VALUES (p_studio_name, p_address, p_location, p_phone_studio, p_email_studio, p_local_engineer);
-            COMMIT;
-            -- DBMS_OUTPUT.PUT_LINE('Recording studio ' || p_studio_name || ' was successfully added to the database.');
-        END add_recording_studio;
+    BEGIN
+        INSERT INTO RECORDING_STUDIOS (STUDIO_NAME, ADDRESS, LOCATION, PHONE_STUDIO, EMAIL_STUDIO, LOCAL_ENGINEER)
+        VALUES (p_studio_name, p_address, p_location, p_phone_studio, p_email_studio, p_local_engineer);
+        COMMIT;
+        -- DBMS_OUTPUT.PUT_LINE('Recording studio ' || p_studio_name || ' was successfully added to the database.');
+    END add_recording_studio;
 
     PROCEDURE add_room
     (
@@ -312,13 +312,13 @@ AS
         p_recstudio_name    recording_studios.studio_name%TYPE)
     AS
         v_studio_id RECORDING_STUDIOS.studio_code%TYPE;
-        BEGIN
-            v_studio_id := lookup_recording_studio(p_recstudio_name);
-            INSERT INTO ROOMS (ROOM_NAME, AREA_INSQM, COSTPERHOUR, SINGER_BOOTH, INSTR_REC_BOOTH, RECORDING_STUDIOS_STUDIO_CODE)
-            VALUES (p_room_name, p_area_insqm, p_costperhour, p_singer_booth, p_instr_rec_booth, v_studio_id);
-            COMMIT;
-            -- DBMS_OUTPUT.PUT_LINE('The room with name ' || p_room_name || ' was added successfully to the database.');
-        END add_room;
+    BEGIN
+        v_studio_id := lookup_recording_studio(p_recstudio_name);
+        INSERT INTO ROOMS (ROOM_NAME, AREA_INSQM, COSTPERHOUR, SINGER_BOOTH, INSTR_REC_BOOTH, RECORDING_STUDIOS_STUDIO_CODE)
+        VALUES (p_room_name, p_area_insqm, p_costperhour, p_singer_booth, p_instr_rec_booth, v_studio_id);
+        COMMIT;
+        -- DBMS_OUTPUT.PUT_LINE('The room with name ' || p_room_name || ' was added successfully to the database.');
+    END add_room;
 
     PROCEDURE add_equipment
     (   p_rentperhour       equipment.rentperhour%TYPE, --M6
@@ -334,18 +334,18 @@ AS
     AS
         v_room_id ROOMS.room_code%TYPE;
         v_recstu_id ROOMS.RECORDING_STUDIOS_STUDIO_CODE%TYPE;
-        BEGIN
-            -- DBMS_OUTPUT.PUT_LINE(p_room_name);
-            -- DBMS_OUTPUT.PUT_LINE(p_rec_stu_name);
-            v_room_id := lookup_room(p_room_name);
-            -- DBMS_OUTPUT.PUT_LINE(v_room_id);
-            v_recstu_id := lookup_recording_studio_room(p_room_name);
-            -- DBMS_OUTPUT.PUT_LINE(v_recstu_id);
-            INSERT INTO EQUIPMENT(rentperhour,equipmentname, mixing_console, monitors, hardware, daw, software, synths, vocal_mic, rooms_room_code, ro_rec_stu_code)
-            VALUES (p_rentperhour, p_equipmentname, p_mixing_console, p_monitors, p_hardware, p_daw, p_software, p_synths, p_vocal_mic, v_room_id, v_recstu_id);
-            COMMIT;
-            -- DBMS_OUTPUT.PUT_LINE('The equipment was added successfully to the database.');
-        END add_equipment;
+    BEGIN
+        -- DBMS_OUTPUT.PUT_LINE(p_room_name);
+        -- DBMS_OUTPUT.PUT_LINE(p_rec_stu_name);
+        v_room_id := lookup_room(p_room_name);
+        -- DBMS_OUTPUT.PUT_LINE(v_room_id);
+        v_recstu_id := lookup_recording_studio_room(p_room_name);
+        -- DBMS_OUTPUT.PUT_LINE(v_recstu_id);
+        INSERT INTO EQUIPMENT(rentperhour,equipmentname, mixing_console, monitors, hardware, daw, software, synths, vocal_mic, rooms_room_code, ro_rec_stu_code)
+        VALUES (p_rentperhour, p_equipmentname, p_mixing_console, p_monitors, p_hardware, p_daw, p_software, p_synths, p_vocal_mic, v_room_id, v_recstu_id);
+        COMMIT;
+        -- DBMS_OUTPUT.PUT_LINE('The equipment was added successfully to the database.');
+    END add_equipment;
 
     PROCEDURE add_booking
     (   p_res_date      bookings.res_date%TYPE,
@@ -358,15 +358,15 @@ AS
         v_room_id ROOMS.room_code%TYPE;
         v_recstu_id RECORDING_STUDIOS.studio_code%TYPE;
         v_artist_id ARTISTS.artist_id%TYPE;
-        BEGIN
-            v_room_id := lookup_room(p_room_name);
-            v_recstu_id := lookup_recording_studio(p_studio_name);
-            v_artist_id := lookup_artist(p_artist_name);
-            INSERT INTO BOOKINGS (RES_DATE, START_HOUR, END_HOUR, ARTISTS_ARTIST_ID, ROOMS_ROOM_CODE, ROOMS_STUDIO_CODE)
-            VALUES (p_res_date, p_start_hour, p_end_hour,v_artist_id, v_room_id, v_recstu_id);
+    BEGIN
+        v_room_id := lookup_room(p_room_name);
+        v_recstu_id := lookup_recording_studio(p_studio_name);
+        v_artist_id := lookup_artist(p_artist_name);
+        INSERT INTO BOOKINGS (RES_DATE, START_HOUR, END_HOUR, ARTISTS_ARTIST_ID, ROOMS_ROOM_CODE, ROOMS_STUDIO_CODE)
+        VALUES (p_res_date, p_start_hour, p_end_hour,v_artist_id, v_room_id, v_recstu_id);
         COMMIT;
-       --  DBMS_OUTPUT.PUT_LINE('The booking was successfully registered in the database.');
-        END add_booking;
+        --  DBMS_OUTPUT.PUT_LINE('The booking was successfully registered in the database.');
+    END add_booking;
 
     PROCEDURE add_artist_recstudio_rel
     (        p_artist_name   artists.name%TYPE,
@@ -374,14 +374,14 @@ AS
     AS
         v_recstu_id RECORDING_STUDIOS.studio_code%TYPE;
         v_artist_id ARTISTS.artist_id%TYPE;
-        BEGIN
-            v_recstu_id := lookup_recording_studio(p_studio_name);
-            v_artist_id := lookup_artist(p_artist_name);
-            INSERT INTO ARTISTS_RECSTUDIOS_RELATION (A_ARTIST_ID, RS_STUDIO_CODE)
-            VALUES (v_artist_id, v_recstu_id);
+    BEGIN
+        v_recstu_id := lookup_recording_studio(p_studio_name);
+        v_artist_id := lookup_artist(p_artist_name);
+        INSERT INTO ARTISTS_RECSTUDIOS_RELATION (A_ARTIST_ID, RS_STUDIO_CODE)
+        VALUES (v_artist_id, v_recstu_id);
         COMMIT;
         -- DBMS_OUTPUT.PUT_LINE('The artist was successfully linked to the recording studio.');
-        END add_artist_recstudio_rel;
+    END add_artist_recstudio_rel;
 
     -- Procedures M5
     PROCEDURE generate_random_artist(
@@ -405,11 +405,11 @@ AS
                 v_email_artist := v_artist_name || '@gmail.com';
 
                 add_artist(v_artist_name,
-                    v_music_genre,
-                    v_profession,
-                    v_birth_date,
-                    v_phone_artist,
-                    v_email_artist);
+                           v_music_genre,
+                           v_profession,
+                           v_birth_date,
+                           v_phone_artist,
+                           v_email_artist);
             END LOOP;
     END generate_random_artist;
 
@@ -435,15 +435,15 @@ AS
                 v_local_engineer := random_number(0,2);
 
                 add_recording_studio(v_studio_name,
-                    v_address,
-                    v_location,
-                    v_phone_studio,
-                    v_email_studio,
-                    v_local_engineer
+                                     v_address,
+                                     v_location,
+                                     v_phone_studio,
+                                     v_email_studio,
+                                     v_local_engineer
                     );
             END LOOP;
 
-        END generate_random_recordingstudio;
+    END generate_random_recordingstudio;
 
     PROCEDURE generate_random_relation(
         p_count IN NUMBER DEFAULT 1
@@ -480,21 +480,21 @@ AS
             LOOP
                 FOR j in 1 ..p_count
                     LOOP
-                    v_room_name := 'Room_' || i || '_'|| j;
-                    v_area_insqm := random_number(1000, 49999)/100;
-                    v_costperhour := random_number(10, 199);
-                    -- DBMS_OUTPUT.PUT_LINE(v_costperhour);
-                    v_singer_booth := random_number(0,2);
-                    v_instr_rec_booth := random_number(0,2);
-                    v_recstudio_name := random_studio_name();
+                        v_room_name := 'Room_' || i || '_'|| j;
+                        v_area_insqm := random_number(1000, 49999)/100;
+                        v_costperhour := random_number(10, 199);
+                        -- DBMS_OUTPUT.PUT_LINE(v_costperhour);
+                        v_singer_booth := random_number(0,2);
+                        v_instr_rec_booth := random_number(0,2);
+                        v_recstudio_name := random_studio_name();
 
-                    add_room(v_room_name,
-                        v_area_insqm,
-                        v_costperhour,
-                        v_singer_booth,
-                        v_instr_rec_booth,
-                        v_recstudio_name);
-                    v_count := v_count +1;
+                        add_room(v_room_name,
+                                 v_area_insqm,
+                                 v_costperhour,
+                                 v_singer_booth,
+                                 v_instr_rec_booth,
+                                 v_recstudio_name);
+                        v_count := v_count +1;
                     END LOOP;
             END LOOP;
         DBMS_OUTPUT.PUT_LINE(TO_CHAR(SYSTIMESTAMP, '[YYYY-MM-DD HH24:MI:SS]  ') || 'Generate rooms(' || p_count || ') generated ' || v_count || ' rows.');
@@ -532,38 +532,38 @@ AS
                     LOOP
                         FOR z in 1 ..p_count_equipment
                             LOOP
-                            v_rentperhour := random_number(10,199);
-                            v_equipmentname := 'Equipment_' || i || '_' || j || '_' || z;
-                            v_mixing_console := random_mixing_console();
-                            -- DBMS_OUTPUT.PUT_LINE(v_mixing_console);
-                            v_monitors := random_monitors();
-                            -- DBMS_OUTPUT.PUT_LINE(v_monitors);
-                            v_hardware := random_hardware() || ', ' || random_hardware();
-                            -- DBMS_OUTPUT.PUT_LINE(v_hardware);
-                            v_daw := random_DAW();
-                            -- DBMS_OUTPUT.PUT_LINE(v_daw);
-                            v_software := random_software() || ',' || random_software() ||  ',' || random_software();
-                            -- DBMS_OUTPUT.PUT_LINE(v_software);
-                            v_synths := random_synths() || ', ' || random_synths() || ', ' || random_synths();
-                            -- DBMS_OUTPUT.PUT_LINE(v_synths);
-                            v_vocal_mic := random_vocal_mic();
-                            -- DBMS_OUTPUT.PUT_LINE(v_vocal_mic);
-                            v_room_name := random_room_name();
-                            -- DBMS_OUTPUT.PUT_LINE(v_room_name);
-                            v_rec_stu_name := lookup_recording_studio_room(v_room_name);
-                            -- DBMS_OUTPUT.PUT_LINE(v_rec_stu_name);
+                                v_rentperhour := random_number(10,199);
+                                v_equipmentname := 'Equipment_' || i || '_' || j || '_' || z;
+                                v_mixing_console := random_mixing_console();
+                                -- DBMS_OUTPUT.PUT_LINE(v_mixing_console);
+                                v_monitors := random_monitors();
+                                -- DBMS_OUTPUT.PUT_LINE(v_monitors);
+                                v_hardware := random_hardware() || ', ' || random_hardware();
+                                -- DBMS_OUTPUT.PUT_LINE(v_hardware);
+                                v_daw := random_DAW();
+                                -- DBMS_OUTPUT.PUT_LINE(v_daw);
+                                v_software := random_software() || ',' || random_software() ||  ',' || random_software();
+                                -- DBMS_OUTPUT.PUT_LINE(v_software);
+                                v_synths := random_synths() || ', ' || random_synths() || ', ' || random_synths();
+                                -- DBMS_OUTPUT.PUT_LINE(v_synths);
+                                v_vocal_mic := random_vocal_mic();
+                                -- DBMS_OUTPUT.PUT_LINE(v_vocal_mic);
+                                v_room_name := random_room_name();
+                                -- DBMS_OUTPUT.PUT_LINE(v_room_name);
+                                v_rec_stu_name := lookup_recording_studio_room(v_room_name);
+                                -- DBMS_OUTPUT.PUT_LINE(v_rec_stu_name);
 
-                            add_equipment(v_rentperhour,
-                                v_equipmentname,
-                                v_mixing_console,
-                                v_monitors,
-                                v_hardware,
-                                v_daw,
-                                v_software,
-                                v_synths,
-                                v_vocal_mic,
-                                v_room_name);
-                            v_count := v_count + 1;
+                                add_equipment(v_rentperhour,
+                                              v_equipmentname,
+                                              v_mixing_console,
+                                              v_monitors,
+                                              v_hardware,
+                                              v_daw,
+                                              v_software,
+                                              v_synths,
+                                              v_vocal_mic,
+                                              v_room_name);
+                                v_count := v_count + 1;
                             END LOOP;
                     END LOOP;
             END LOOP;
@@ -640,87 +640,109 @@ AS
 
     PROCEDURE manueel_m4
     AS
-        BEGIN
-            PKG_recordingstudios.ADD_ARTIST('The Weeknd', 'Pop', 'Singer', TO_DATE('16-02-1990'), 0478031245, 'theweeknd@gmail.com');
-            PKG_RECORDINGSTUDIOS.ADD_ARTIST('Reinier Zonneveld', 'Techno', 'Producer', TO_DATE('30-01-1991'), 0499021456, 'reinier.zonneveld@gmail.com');
-            PKG_RECORDINGSTUDIOS.ADD_ARTIST('Eli Brown', 'Techno', 'Producer', TO_DATE('12-09-1989'), 0497032848, 'elibrown@gmail.com');
-            PKG_RECORDINGSTUDIOS.ADD_ARTIST('SG Lewis', 'Pop', 'Singer', TO_DATE('09-04-1994'), 0476149593, 'sglewis@gmail.com');
-            PKG_RECORDINGSTUDIOS.ADD_ARTIST('Drake', 'Rap', 'Singer', TO_DATE('24-10-1986'), 0499375382, 'contact@drake.com');
+    BEGIN
+        PKG_recordingstudios.ADD_ARTIST('The Weeknd', 'Pop', 'Singer', TO_DATE('16-02-1990'), 0478031245, 'theweeknd@gmail.com');
+        PKG_RECORDINGSTUDIOS.ADD_ARTIST('Reinier Zonneveld', 'Techno', 'Producer', TO_DATE('30-01-1991'), 0499021456, 'reinier.zonneveld@gmail.com');
+        PKG_RECORDINGSTUDIOS.ADD_ARTIST('Eli Brown', 'Techno', 'Producer', TO_DATE('12-09-1989'), 0497032848, 'elibrown@gmail.com');
+        PKG_RECORDINGSTUDIOS.ADD_ARTIST('SG Lewis', 'Pop', 'Singer', TO_DATE('09-04-1994'), 0476149593, 'sglewis@gmail.com');
+        PKG_RECORDINGSTUDIOS.ADD_ARTIST('Drake', 'Rap', 'Singer', TO_DATE('24-10-1986'), 0499375382, 'contact@drake.com');
 
-            PKG_RECORDINGSTUDIOS.ADD_RECORDING_STUDIO('Abbey Road', 'Italiëlei 2','ANTWERPEN', 0475021343, 'abbeyroad@gmail.com', 1);
-            PKG_RECORDINGSTUDIOS.ADD_RECORDING_STUDIO('The Warehouse Studios', 'Merksemsebaan 179','WIJNEGEM', 0498931988, 'warehousestudios@outlook.com', 0);
-            PKG_RECORDINGSTUDIOS.ADD_RECORDING_STUDIO('Drumcode Studios', 'Koningstraat 14','GENT', 0499195183, 'info@drumcode.com', 1);
-            PKG_RECORDINGSTUDIOS.ADD_RECORDING_STUDIO('Valhalla Recording Studios', 'Palmstraat 32','HASSELT', 0478392935, 'record@valhallastudios.com', 0);
-            PKG_RECORDINGSTUDIOS.ADD_RECORDING_STUDIO('Universal Studios', 'Rue Picard 7','BRUSSEL', 027758140, 'contact@universalmusic.be', 1);
+        PKG_RECORDINGSTUDIOS.ADD_RECORDING_STUDIO('Abbey Road', 'Italiëlei 2','ANTWERPEN', 0475021343, 'abbeyroad@gmail.com', 1);
+        PKG_RECORDINGSTUDIOS.ADD_RECORDING_STUDIO('The Warehouse Studios', 'Merksemsebaan 179','WIJNEGEM', 0498931988, 'warehousestudios@outlook.com', 0);
+        PKG_RECORDINGSTUDIOS.ADD_RECORDING_STUDIO('Drumcode Studios', 'Koningstraat 14','GENT', 0499195183, 'info@drumcode.com', 1);
+        PKG_RECORDINGSTUDIOS.ADD_RECORDING_STUDIO('Valhalla Recording Studios', 'Palmstraat 32','HASSELT', 0478392935, 'record@valhallastudios.com', 0);
+        PKG_RECORDINGSTUDIOS.ADD_RECORDING_STUDIO('Universal Studios', 'Rue Picard 7','BRUSSEL', 027758140, 'contact@universalmusic.be', 1);
 
-            PKG_RECORDINGSTUDIOS.ADD_ROOM('Road Prince', 45.12, 100, 1, 1,'ABBEY ROAD');
-            PKG_RECORDINGSTUDIOS.ADD_ROOM('Filth On Acid', 34.35, 75, 0, 0, 'THE WAREHOUSE STUDIOS');
-            PKG_RECORDINGSTUDIOS.ADD_ROOM('Beyer', 23.76, 65, 0, 0,'DRUMCODE STUDIOS');
-            PKG_RECORDINGSTUDIOS.ADD_ROOM('Atlantis', 92.52, 135, 1, 1, 'VALHALLA RECORDING STUDIOS');
-            PKG_RECORDINGSTUDIOS.ADD_ROOM('Michael',103.59, 185, 1, 1, 'UNIVERSAL STUDIOS');
+        PKG_RECORDINGSTUDIOS.ADD_ROOM('Road Prince', 45.12, 100, 1, 1,'ABBEY ROAD');
+        PKG_RECORDINGSTUDIOS.ADD_ROOM('Filth On Acid', 34.35, 75, 0, 0, 'THE WAREHOUSE STUDIOS');
+        PKG_RECORDINGSTUDIOS.ADD_ROOM('Beyer', 23.76, 65, 0, 0,'DRUMCODE STUDIOS');
+        PKG_RECORDINGSTUDIOS.ADD_ROOM('Atlantis', 92.52, 135, 1, 1, 'VALHALLA RECORDING STUDIOS');
+        PKG_RECORDINGSTUDIOS.ADD_ROOM('Michael',103.59, 185, 1, 1, 'UNIVERSAL STUDIOS');
 
-            PKG_RECORDINGSTUDIOS.ADD_EQUIPMENT(53, 'equipment_001','SSL', 'Dynaudio', 'LA-2A compressor, 1176 compressor, Pultec', 'ProTools', 'Melodyne, Fabfilter Bundle, iZotope Bundle', 'Moog, Roland, Nord Lead', 'Neumann', 'ROAD PRINCE');
-            PKG_RECORDINGSTUDIOS.ADD_EQUIPMENT(76,'equipment_002','NEVE', 'Barefoot', 'Distressor, Universal Audio', 'Ableton', 'UAD Bundle, Fabfilter Bundle, Waves Bundle', 'Moog, Roland', 'Shure', 'FILTH ON ACID');
-            PKG_RECORDINGSTUDIOS.ADD_EQUIPMENT(105,'equipment_003','AVID', 'Adam', 'Distressor, Fairchild compressors, Pultec', 'Ableton', 'iZotope Bundle, Waves Bundle, Fabfilter Bundle', 'Roland, Prophet', NULL, 'BEYER');
-            PKG_RECORDINGSTUDIOS.ADD_EQUIPMENT(127,'equipment_004', 'API', 'Focal', 'LA-2A compressor, 1176 compressor, Fairchild comp', 'Logic', 'Melodyne, Waves Bundle, iZotope Bundle', 'Nord Lead, Prophet, Oberheimer, Moog, Roland','Sony', 'ATLANTIS');
-            PKG_RECORDINGSTUDIOS.ADD_EQUIPMENT(178,'equipment_005','SSL', 'Genelec', 'LA-2A compressor, Universal Audio, 1176 compressor', 'ProTools', 'Melodyne, UAD Bundle, iZotope Bundle', 'Nord Lead, Yamaha, Prophet, Moog', 'Neumann', 'MICHAEL');
+        PKG_RECORDINGSTUDIOS.ADD_EQUIPMENT(53, 'equipment_001','SSL', 'Dynaudio', 'LA-2A compressor, 1176 compressor, Pultec', 'ProTools', 'Melodyne, Fabfilter Bundle, iZotope Bundle', 'Moog, Roland, Nord Lead', 'Neumann', 'ROAD PRINCE');
+        PKG_RECORDINGSTUDIOS.ADD_EQUIPMENT(76,'equipment_002','NEVE', 'Barefoot', 'Distressor, Universal Audio', 'Ableton', 'UAD Bundle, Fabfilter Bundle, Waves Bundle', 'Moog, Roland', 'Shure', 'FILTH ON ACID');
+        PKG_RECORDINGSTUDIOS.ADD_EQUIPMENT(105,'equipment_003','AVID', 'Adam', 'Distressor, Fairchild compressors, Pultec', 'Ableton', 'iZotope Bundle, Waves Bundle, Fabfilter Bundle', 'Roland, Prophet', NULL, 'BEYER');
+        PKG_RECORDINGSTUDIOS.ADD_EQUIPMENT(127,'equipment_004', 'API', 'Focal', 'LA-2A compressor, 1176 compressor, Fairchild comp', 'Logic', 'Melodyne, Waves Bundle, iZotope Bundle', 'Nord Lead, Prophet, Oberheimer, Moog, Roland','Sony', 'ATLANTIS');
+        PKG_RECORDINGSTUDIOS.ADD_EQUIPMENT(178,'equipment_005','SSL', 'Genelec', 'LA-2A compressor, Universal Audio, 1176 compressor', 'ProTools', 'Melodyne, UAD Bundle, iZotope Bundle', 'Nord Lead, Yamaha, Prophet, Moog', 'Neumann', 'MICHAEL');
 
-            PKG_RECORDINGSTUDIOS.ADD_BOOKING(TO_DATE('2023-03-15', 'YYYY-MM-DD'), EXTRACT(HOUR FROM TIMESTAMP '2023-03-15 10:00:00'), EXTRACT(HOUR FROM TIMESTAMP '2023-03-15 12:00:00'), 'THE WEEKND', 'ROAD PRINCE', 'ABBEY ROAD');
-            PKG_RECORDINGSTUDIOS.ADD_BOOKING(TO_DATE('2023-04-06', 'YYYY-MM-DD'), EXTRACT(HOUR FROM TIMESTAMP '2023-04-06 13:00:00'), EXTRACT(HOUR FROM TIMESTAMP '2023-04-06 17:00:00'), 'REINIER ZONNEVELD', 'FILTH ON ACID', 'THE WAREHOUSE STUDIOS');
-            PKG_RECORDINGSTUDIOS.ADD_BOOKING(TO_DATE('2023-04-13', 'YYYY-MM-DD'), EXTRACT(HOUR FROM TIMESTAMP '2023-04-13 09:00:00'), EXTRACT(HOUR FROM TIMESTAMP '2023-04-13 12:00:00'), 'ELI BROWN', 'BEYER', 'DRUMCODE STUDIOS');
-            PKG_RECORDINGSTUDIOS.ADD_BOOKING(TO_DATE('2023-03-28', 'YYYY-MM-DD'), EXTRACT(HOUR FROM TIMESTAMP '2023-03-28 14:00:00'), EXTRACT(HOUR FROM TIMESTAMP '2023-03-28 16:00:00'), 'SG LEWIS', 'ATLANTIS', 'VALHALLA RECORDING STUDIOS');
-            PKG_RECORDINGSTUDIOS.ADD_BOOKING(TO_DATE('2023-05-02', 'YYYY-MM-DD'), EXTRACT(HOUR FROM TIMESTAMP '2023-05-02 15:00:00'), EXTRACT(HOUR FROM TIMESTAMP '2023-05-02 18:00:00'), 'DRAKE', 'MICHAEL', 'UNIVERSAL STUDIOS');
+        PKG_RECORDINGSTUDIOS.ADD_BOOKING(TO_DATE('2023-03-15', 'YYYY-MM-DD'), EXTRACT(HOUR FROM TIMESTAMP '2023-03-15 10:00:00'), EXTRACT(HOUR FROM TIMESTAMP '2023-03-15 12:00:00'), 'THE WEEKND', 'ROAD PRINCE', 'ABBEY ROAD');
+        PKG_RECORDINGSTUDIOS.ADD_BOOKING(TO_DATE('2023-04-06', 'YYYY-MM-DD'), EXTRACT(HOUR FROM TIMESTAMP '2023-04-06 13:00:00'), EXTRACT(HOUR FROM TIMESTAMP '2023-04-06 17:00:00'), 'REINIER ZONNEVELD', 'FILTH ON ACID', 'THE WAREHOUSE STUDIOS');
+        PKG_RECORDINGSTUDIOS.ADD_BOOKING(TO_DATE('2023-04-13', 'YYYY-MM-DD'), EXTRACT(HOUR FROM TIMESTAMP '2023-04-13 09:00:00'), EXTRACT(HOUR FROM TIMESTAMP '2023-04-13 12:00:00'), 'ELI BROWN', 'BEYER', 'DRUMCODE STUDIOS');
+        PKG_RECORDINGSTUDIOS.ADD_BOOKING(TO_DATE('2023-03-28', 'YYYY-MM-DD'), EXTRACT(HOUR FROM TIMESTAMP '2023-03-28 14:00:00'), EXTRACT(HOUR FROM TIMESTAMP '2023-03-28 16:00:00'), 'SG LEWIS', 'ATLANTIS', 'VALHALLA RECORDING STUDIOS');
+        PKG_RECORDINGSTUDIOS.ADD_BOOKING(TO_DATE('2023-05-02', 'YYYY-MM-DD'), EXTRACT(HOUR FROM TIMESTAMP '2023-05-02 15:00:00'), EXTRACT(HOUR FROM TIMESTAMP '2023-05-02 18:00:00'), 'DRAKE', 'MICHAEL', 'UNIVERSAL STUDIOS');
 
-            PKG_RECORDINGSTUDIOS.add_artist_recstudio_rel('THE WEEKND','ABBEY ROAD');
-            PKG_RECORDINGSTUDIOS.add_artist_recstudio_rel('REINIER ZONNEVELD','THE WAREHOUSE STUDIOS');
-            PKG_RECORDINGSTUDIOS.add_artist_recstudio_rel('ELI BROWN','DRUMCODE STUDIOS');
-            PKG_RECORDINGSTUDIOS.add_artist_recstudio_rel('SG LEWIS','VALHALLA RECORDING STUDIOS');
-            PKG_RECORDINGSTUDIOS.add_artist_recstudio_rel('DRAKE','UNIVERSAL STUDIOS');
-        END manueel_m4;
+        PKG_RECORDINGSTUDIOS.add_artist_recstudio_rel('THE WEEKND','ABBEY ROAD');
+        PKG_RECORDINGSTUDIOS.add_artist_recstudio_rel('REINIER ZONNEVELD','THE WAREHOUSE STUDIOS');
+        PKG_RECORDINGSTUDIOS.add_artist_recstudio_rel('ELI BROWN','DRUMCODE STUDIOS');
+        PKG_RECORDINGSTUDIOS.add_artist_recstudio_rel('SG LEWIS','VALHALLA RECORDING STUDIOS');
+        PKG_RECORDINGSTUDIOS.add_artist_recstudio_rel('DRAKE','UNIVERSAL STUDIOS');
+    END manueel_m4;
 
     -- Milestone 6
     PROCEDURE printreport_2_levels_m6(p_x IN NUMBER, p_y IN NUMBER, p_z IN NUMBER)
         IS
-            CURSOR cursor_z(p_roomID IN NUMBER) IS
-                SELECT equipment_code, r.room_code, equipmentname, rentperhour
-                FROM EQUIPMENT e
-                    JOIN ROOMS r ON r.ROOM_CODE = e.ROOMS_ROOM_CODE
-                WHERE r.ROOM_CODE = p_roomID;
-            CURSOR cursor_y(p_studioID IN NUMBER) IS
-                SELECT r.room_code, r.room_name, AVG(e.rentperhour) AS "Average Rentperhour / Room"
-                FROM ROOMS r
-                    JOIN EQUIPMENT e on r.ROOM_CODE = e.ROOMS_ROOM_CODE
-                    JOIN RECORDING_STUDIOS s on r.RECORDING_STUDIOS_STUDIO_CODE = s.STUDIO_CODE
-                WHERE s.STUDIO_CODE = p_studioID
-                GROUP BY r.room_code, r.room_name;
-            CURSOR cursor_x IS
-                SELECT STUDIO_CODE, STUDIO_NAME, AVG(e.rentperhour) AS "Average Rentperhour / Studio"
-                FROM RECORDING_STUDIOS s
-                    JOIN ROOMS r ON s.STUDIO_CODE = r.RECORDING_STUDIOS_STUDIO_CODE
-                    JOIN EQUIPMENT e ON e.ROOMS_ROOM_CODE = r.ROOM_CODE
-                GROUP BY STUDIO_CODE, STUDIO_NAME;
+        CURSOR cursor_z(p_roomID IN NUMBER) IS
+            SELECT equipment_code, r.room_code, equipmentname, rentperhour
+            FROM EQUIPMENT e
+                     JOIN ROOMS r ON r.ROOM_CODE = e.ROOMS_ROOM_CODE
+            WHERE r.ROOM_CODE = p_roomID;
+        CURSOR cursor_y(p_studioID IN NUMBER) IS
+            SELECT r.room_code, r.room_name, AVG(e.rentperhour) AS "Average Rentperhour / Room"
+            FROM ROOMS r
+                     JOIN EQUIPMENT e on r.ROOM_CODE = e.ROOMS_ROOM_CODE
+                     JOIN RECORDING_STUDIOS s on r.RECORDING_STUDIOS_STUDIO_CODE = s.STUDIO_CODE
+            WHERE s.STUDIO_CODE = p_studioID
+            GROUP BY r.room_code, r.room_name;
+        CURSOR cursor_x IS
+            SELECT STUDIO_CODE, STUDIO_NAME, AVG(e.rentperhour) AS "Average Rentperhour / Studio"
+            FROM RECORDING_STUDIOS s
+                     JOIN ROOMS r ON s.STUDIO_CODE = r.RECORDING_STUDIOS_STUDIO_CODE
+                     JOIN EQUIPMENT e ON e.ROOMS_ROOM_CODE = r.ROOM_CODE
+            GROUP BY STUDIO_CODE, STUDIO_NAME;
 
-            exc_negative_number EXCEPTION;
-        BEGIN
-            IF p_x <  0 OR p_y < 0 OR p_z < 0
-            THEN
-                raise exc_negative_number;
-            END IF;
-            FOR c_x IN cursor_x
-                LOOP
-                    DBMS_OUTPUT.PUT_LINE('------------------------------------------------------------');
-                    DBMS_OUTPUT.PUT_LINE('|      StudioCode     |        Studio_Name      | Average Rentperhour / Studio  |');
-                    DBMS_OUTPUT.PUT_LINE('------------------------------------------------------------');
-                    DBMS_OUTPUT.PUT_LINE('|    ' || c_x.STUDIO_CODE || '   |   ' || c_x.STUDIO_NAME || '    |   ' || c_x."Average Rentperhour / Studio" || '  |');
+        exc_negative_number EXCEPTION;
+    BEGIN
+        IF p_x <  0 OR p_y < 0 OR p_z < 0
+        THEN
+            raise exc_negative_number;
+        END IF;
+        FOR c_x IN cursor_x
+            LOOP
+                DBMS_OUTPUT.PUT_LINE('------------------------------------------------------------------------------------------');
+                DBMS_OUTPUT.PUT_LINE('|      StudioCode       |        Studio_Name      |    Average Rentperhour / Studio    |  ');
+                DBMS_OUTPUT.PUT_LINE('------------------------------------------------------------------------------------------');
+                DBMS_OUTPUT.PUT_LINE('|          ' || c_x.STUDIO_CODE || '          |   ' || c_x.STUDIO_NAME || '    |   ' || round(c_x."Average Rentperhour / Studio", 2) || '  |');
 
-                    FOR c_y IN cursor_y(c_x.STUDIO_CODE)
-                        LOOP
-                            DBMS_OUTPUT.PUT_LINE('|      StudioCode     |        Studio_Name      | Average Rentperhour / Studio  |'')')
-                        end loop;
-
-                END LOOP;
-
-
+                FOR c_y IN cursor_y(c_x.STUDIO_CODE)
+                    LOOP
+                        DBMS_OUTPUT.PUT_LINE('|      RoomCode     |        Room_Name      | Average Rentperhour / Room  |'')');
+                        DBMS_OUTPUT.PUT_LINE('---------------------------------------------------------------------------------');
+                        DBMS_OUTPUT.PUT_LINE((lpad(c_y.ROOM_CODE, 12, ' ')) || ' ' ||
+                                             lpad(c_y.ROOM_NAME, 22, ' ') || '     ' ||
+                                             lpad(round(c_y."Average Rentperhour / Room", 2),  14,  ' '));
+                        DBMS_OUTPUT.PUT_LINE('------------------------------------------------------------');
+                        DBMS_OUTPUT.PUT_LINE('|     EquipmentCode     |'  ||  '|      Room_code     ' || '|      EquipmentName     ' || '     Rent per hour    ');
+                        DBMS_OUTPUT.PUT_LINE('-----------------------------------------------------------------------------------------');
+                        FOR c_z IN cursor_z(c_y.ROOM_CODE)
+                            LOOP
+                                DBMS_OUTPUT.PUT_LINE(
+                                            lpad(c_z.EQUIPMENT_CODE, 12, ' ') || '    ' ||
+                                            lpad(c_z.ROOM_CODE, 12, ' ') || '    ' ||
+                                            lpad(c_z.EQUIPMENTNAME, 25, ' ') || '     ' ||
+                                            lpad(c_z.RENTPERHOUR, 20, ' '));
+                                EXIT WHEN cursor_z%rowcount >= p_z;
+                            END LOOP;
+                        EXIT WHEN cursor_y%rowcount >= p_y;
+                    END LOOP;
+                DBMS_OUTPUT.PUT_LINE('------------------------------------------------------------');
+                DBMS_OUTPUT.PUT_LINE('     ');
+                DBMS_OUTPUT.PUT_LINE('     ');
+                EXIT WHEN cursor_x%rowcount >= p_x;
+            END LOOP;
+    EXCEPTION
+        WHEN exc_negative_number THEN
+            DBMS_OUTPUT.PUT_LINE(to_char(systimestamp, '[YYYY-MM-DD HH24:MI:SS]  ') || 'Parameter must be greater than 0, as the system cannot print a negative number of rows.');
+    END;
 
 END PKG_recordingstudios;
 
