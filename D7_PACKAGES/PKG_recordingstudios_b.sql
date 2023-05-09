@@ -369,15 +369,7 @@ AS
     END add_artist_recstudio_rel;
 
     -- Add procedures bulk M7
-    PROCEDURE add_artist_bulk(artists IN t_artists_bulk )
-        AS
-        TYPE t_artists_bulk IS TABLE OF ARTISTS%ROWTYPE INDEX BY PLS_INTEGER;
-    BEGIN
-        FORALL i in indices of artists
-            INSERT INTO ARTISTS(name, music_genre, profession, birth_date, phone_artist, email_artist)
-            VALUES(artists(i).name, artists(i).music_genre, artists(i).profession, artists(i).birth_date, artists(i).phone_artist,artists(i).email_artist);
-        COMMIT;
-    END add_artist_bulk;
+    -- already bulk procedures applied in M5
 
     -- Generate procedures M5 --
 
@@ -566,6 +558,10 @@ AS
         DBMS_OUTPUT.PUT_LINE(TO_CHAR(SYSTIMESTAMP, '[YYYY-MM-DD HH24:MI:SS]  ') || 'Generate equipment(' || p_count_equipment || ') generated ' || v_count || ' rows.');
     END generate_random_equipment;
 
+    -------------------------------
+    -- PUBLIC FUNCTIONS --
+    -------------------------------
+
     PROCEDURE generate_many_to_many(
         p_amount_artists            IN NUMBER DEFAULT 1,
         p_amount_recording_studios  IN NUMBER DEFAULT 1,
@@ -620,10 +616,6 @@ AS
         dbms_output.put_line(TO_CHAR(SYSTIMESTAMP, '[YYYY-MM-DD HH24:MI:SS]  ') || 'The duration of generate_2_levels was: ' || TO_CHAR(ts2 - ts1, 'SSSS.FF'));
 
     END generate_2_levels;
-
-    -------------------------------
-    -- PUBLIC FUNCTIONS --
-    -------------------------------
 
     --  M4 --
     PROCEDURE empty_tables

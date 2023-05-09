@@ -1,7 +1,52 @@
 CREATE OR REPLACE PACKAGE PKG_recordingstudios
 AS
-        --  M4
         PROCEDURE empty_tables;
+
+
+        PROCEDURE generate_many_to_many(
+            p_amount_artists            IN NUMBER DEFAULT 1,
+            p_amount_recording_studios  IN NUMBER DEFAULT 1,
+            p_amount_relations          IN NUMBER DEFAULT 1
+        );
+
+        PROCEDURE generate_2_levels(
+            p_amount_recording_studios  IN NUMBER DEFAULT 1,
+            p_amount_rooms              IN NUMBER DEFAULT 1,
+            P_amount_equipment          IN NUMBER DEFAULT 1
+        );
+
+        PROCEDURE bewijs_milestone_5;
+
+        PROCEDURE manueel_m4;
+
+        PROCEDURE printreport_2_levels_m6(p_x IN NUMBER, p_y IN NUMBER, p_z IN NUMBER);
+
+
+            -- PRIVATE FUNCTIONS
+ /*
+        PROCEDURE generate_random_artist(
+            p_count IN NUMBER DEFAULT 1
+        );
+
+        PROCEDURE generate_random_recordingstudio(
+            p_count IN NUMBER DEFAULT 1
+        );
+
+        PROCEDURE generate_random_relation(
+            p_count IN NUMBER DEFAULT 1
+        );
+
+        PROCEDURE generate_random_room(
+            p_count IN NUMBER DEFAULT 1
+        );
+
+        PROCEDURE generate_random_equipment(
+            p_count_equipment IN NUMBER DEFAULT 1,
+            p_count_rooms IN NUMBER DEFAULT 1
+        );
+
+
+
 
         PROCEDURE add_artist
         (   p_artist_name   artists.name%TYPE,
@@ -51,46 +96,7 @@ AS
         (
             p_artist_name   artists.name%TYPE,
             p_studio_name   recording_studios.studio_name%TYPE);
-
-        -- M5
-        PROCEDURE generate_random_artist(
-            p_count IN NUMBER DEFAULT 1
-        );
-
-        PROCEDURE generate_random_recordingstudio(
-            p_count IN NUMBER DEFAULT 1
-        );
-
-        PROCEDURE generate_random_relation(
-            p_count IN NUMBER DEFAULT 1
-        );
-
-        PROCEDURE generate_random_room(
-            p_count IN NUMBER DEFAULT 1
-        );
-
-        PROCEDURE generate_random_equipment(
-            p_count_equipment IN NUMBER DEFAULT 1,
-            p_count_rooms IN NUMBER DEFAULT 1
-        );
-
-        PROCEDURE generate_many_to_many(
-            p_amount_artists            IN NUMBER DEFAULT 1,
-            p_amount_recording_studios  IN NUMBER DEFAULT 1,
-            p_amount_relations          IN NUMBER DEFAULT 1
-        );
-
-        PROCEDURE generate_2_levels(
-            p_amount_recording_studios  IN NUMBER DEFAULT 1,
-            p_amount_rooms              IN NUMBER DEFAULT 1,
-            P_amount_equipment          IN NUMBER DEFAULT 1
-        );
-
-        PROCEDURE bewijs_milestone_5;
-
-        PROCEDURE manueel_m4;
-
-        PROCEDURE printreport_2_levels_m6(p_x IN NUMBER, p_y IN NUMBER, p_z IN NUMBER);
+*/
 
 END PKG_recordingstudios;
 /
