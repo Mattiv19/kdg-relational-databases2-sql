@@ -1,7 +1,9 @@
 CREATE OR REPLACE PACKAGE BODY PKG_recordingstudios
 AS
-    -- PRIVATE HELP FUNCTIONS M4 --
-    -- Lookup functions --
+    -------------------------------
+        -- PRIVATE FUNCTIONS --
+    -------------------------------
+    -- Lookup functions M4 --
 
     FUNCTION lookup_artist
     (   p_artist_name   artists.name%TYPE)
@@ -59,9 +61,6 @@ AS
         RETURN  lo_studio_code_room;
     END lookup_recording_studio_room;
 
-
-
-    -- PRIVATE FUNCTIONS M5
     -- Random Functions M5 --
     FUNCTION random_number
     (p_min  NUMERIC,
@@ -252,25 +251,11 @@ AS
         RETURN v_studio_id.COUNT;
     END recording_studios_count ;
 
+    ------------------------------
+        -- PRIVATE PROCEDURES --
+    ------------------------------
 
-    -- PUBLIC FUNCTIONS --
-    -- Procedures M4 --
-
-    PROCEDURE empty_tables
-    AS
-    BEGIN
-        EXECUTE IMMEDIATE 'TRUNCATE TABLE ARTISTS_RECSTUDIOS_RELATION';
-        EXECUTE IMMEDIATE 'TRUNCATE TABLE BOOKINGS';
-        EXECUTE IMMEDIATE 'TRUNCATE TABLE EQUIPMENT';
-        EXECUTE IMMEDIATE 'TRUNCATE TABLE ROOMS';
-        EXECUTE IMMEDIATE 'TRUNCATE TABLE ARTISTS';
-        EXECUTE IMMEDIATE 'TRUNCATE TABLE RECORDING_STUDIOS';
-
-        EXECUTE IMMEDIATE 'ALTER TABLE BOOKINGS MODIFY RES_CODE GENERATED ALWAYS AS IDENTITY (START WITH 1)';
-        EXECUTE IMMEDIATE 'ALTER TABLE ROOMS MODIFY ROOM_CODE GENERATED ALWAYS AS IDENTITY (START WITH 1)';
-        EXECUTE IMMEDIATE 'ALTER TABLE ARTISTS MODIFY ARTIST_ID GENERATED ALWAYS AS IDENTITY (START WITH 1)';
-        EXECUTE IMMEDIATE 'ALTER TABLE RECORDING_STUDIOS MODIFY STUDIO_CODE GENERATED ALWAYS AS IDENTITY (START WITH 1)';
-    END empty_tables;
+    -- Add procedures M4 --
 
     PROCEDURE add_artist
     (   p_artist_name   artists.name%TYPE,
@@ -383,7 +368,19 @@ AS
         -- DBMS_OUTPUT.PUT_LINE('The artist was successfully linked to the recording studio.');
     END add_artist_recstudio_rel;
 
-    -- Procedures M5
+    -- Add procedures bulk M7
+    PROCEDURE add_artist_bulk(artists IN t_artists_bulk )
+        AS
+        TYPE t_artists_bulk IS TABLE OF ARTISTS%ROWTYPE INDEX BY PLS_INTEGER;
+    BEGIN
+        FORALL i in indices of artists
+            INSERT INTO ARTISTS(name, music_genre, profession, birth_date, phone_artist, email_artist)
+            VALUES(artists(i).name, artists(i).music_genre, artists(i).profession, artists(i).birth_date, artists(i).phone_artist,artists(i).email_artist);
+        COMMIT;
+    END add_artist_bulk;
+
+    -- Generate procedures M5 --
+
     PROCEDURE generate_random_artist(
         p_count IN NUMBER DEFAULT 1
     )
@@ -412,7 +409,6 @@ AS
                            v_email_artist);
             END LOOP;
     END generate_random_artist;
-
 
     PROCEDURE generate_random_recordingstudio(
         p_count IN NUMBER DEFAULT 1
@@ -625,18 +621,26 @@ AS
 
     END generate_2_levels;
 
-    PROCEDURE bewijs_milestone_5
+    -------------------------------
+    -- PUBLIC FUNCTIONS --
+    -------------------------------
+
+    --  M4 --
+    PROCEDURE empty_tables
     AS
     BEGIN
-        dbms_output.put_line(TO_CHAR(SYSTIMESTAMP, '[YYYY-MM-DD HH24:MI:SS]  ') || '1 - random nummer teruggeven binnen een nummerbereik.');
-        dbms_output.put_line(TO_CHAR(SYSTIMESTAMP, '[YYYY-MM-DD HH24:MI:SS]  ') || '  random_number(5,25) --> ' || random_number(5,25));
-        dbms_output.put_line(TO_CHAR(SYSTIMESTAMP, '[YYYY-MM-DD HH24:MI:SS]  ') || '2 - random datum binnen een bereik.');
-        dbms_output.put_line(TO_CHAR(SYSTIMESTAMP, '[YYYY-MM-DD HH24:MI:SS]  ') || '  random_date(to_date(''01012015'', ''DDMMYYYY''), sysdate) --> ' || random_date(to_date('01012015', 'DDMMYYYY'), SYSDATE));
-        dbms_output.put_line(TO_CHAR(SYSTIMESTAMP, '[YYYY-MM-DD HH24:MI:SS]  ') || '3 - random tekst string uit een lijst');
-        dbms_output.put_line(TO_CHAR(SYSTIMESTAMP, '[YYYY-MM-DD HH24:MI:SS]  ') || '  random_music_genre() --> ' || random_music_genre());
-        generate_many_to_many(20,20, 50);
-        generate_2_levels(20,40,50);
-    END bewijs_milestone_5;
+        EXECUTE IMMEDIATE 'TRUNCATE TABLE ARTISTS_RECSTUDIOS_RELATION';
+        EXECUTE IMMEDIATE 'TRUNCATE TABLE BOOKINGS';
+        EXECUTE IMMEDIATE 'TRUNCATE TABLE EQUIPMENT';
+        EXECUTE IMMEDIATE 'TRUNCATE TABLE ROOMS';
+        EXECUTE IMMEDIATE 'TRUNCATE TABLE ARTISTS';
+        EXECUTE IMMEDIATE 'TRUNCATE TABLE RECORDING_STUDIOS';
+
+        EXECUTE IMMEDIATE 'ALTER TABLE BOOKINGS MODIFY RES_CODE GENERATED ALWAYS AS IDENTITY (START WITH 1)';
+        EXECUTE IMMEDIATE 'ALTER TABLE ROOMS MODIFY ROOM_CODE GENERATED ALWAYS AS IDENTITY (START WITH 1)';
+        EXECUTE IMMEDIATE 'ALTER TABLE ARTISTS MODIFY ARTIST_ID GENERATED ALWAYS AS IDENTITY (START WITH 1)';
+        EXECUTE IMMEDIATE 'ALTER TABLE RECORDING_STUDIOS MODIFY STUDIO_CODE GENERATED ALWAYS AS IDENTITY (START WITH 1)';
+    END empty_tables;
 
     PROCEDURE manueel_m4
     AS
@@ -678,7 +682,21 @@ AS
         PKG_RECORDINGSTUDIOS.add_artist_recstudio_rel('DRAKE','UNIVERSAL STUDIOS');
     END manueel_m4;
 
-    -- Milestone 6
+    --  M5 --
+    PROCEDURE bewijs_milestone_5
+    AS
+    BEGIN
+        dbms_output.put_line(TO_CHAR(SYSTIMESTAMP, '[YYYY-MM-DD HH24:MI:SS]  ') || '1 - random nummer teruggeven binnen een nummerbereik.');
+        dbms_output.put_line(TO_CHAR(SYSTIMESTAMP, '[YYYY-MM-DD HH24:MI:SS]  ') || '  random_number(5,25) --> ' || random_number(5,25));
+        dbms_output.put_line(TO_CHAR(SYSTIMESTAMP, '[YYYY-MM-DD HH24:MI:SS]  ') || '2 - random datum binnen een bereik.');
+        dbms_output.put_line(TO_CHAR(SYSTIMESTAMP, '[YYYY-MM-DD HH24:MI:SS]  ') || '  random_date(to_date(''01012015'', ''DDMMYYYY''), sysdate) --> ' || random_date(to_date('01012015', 'DDMMYYYY'), SYSDATE));
+        dbms_output.put_line(TO_CHAR(SYSTIMESTAMP, '[YYYY-MM-DD HH24:MI:SS]  ') || '3 - random tekst string uit een lijst');
+        dbms_output.put_line(TO_CHAR(SYSTIMESTAMP, '[YYYY-MM-DD HH24:MI:SS]  ') || '  random_music_genre() --> ' || random_music_genre());
+        generate_many_to_many(20,20, 50);
+        generate_2_levels(20,40,50);
+    END bewijs_milestone_5;
+
+    --  M6 --
     PROCEDURE printreport_2_levels_m6(p_x IN NUMBER, p_y IN NUMBER, p_z IN NUMBER)
         IS
         CURSOR cursor_z(p_roomID IN NUMBER) IS
