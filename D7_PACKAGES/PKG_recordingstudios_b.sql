@@ -685,7 +685,7 @@ AS
         dbms_output.put_line(TO_CHAR(SYSTIMESTAMP, '[YYYY-MM-DD HH24:MI:SS]  ') || '3 - random tekst string uit een lijst');
         dbms_output.put_line(TO_CHAR(SYSTIMESTAMP, '[YYYY-MM-DD HH24:MI:SS]  ') || '  random_music_genre() --> ' || random_music_genre());
         generate_many_to_many(20,20, 50);
-        generate_2_levels(20,40,50);
+        generate_2_levels(20,40,500);
     END bewijs_milestone_5;
 
     --  M6 --
