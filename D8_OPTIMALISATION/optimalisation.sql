@@ -21,7 +21,7 @@ GROUP BY segment_name, segment_type;
 
 SELECT * FROM RECORDING_STUDIOS;
 
--- Overview of average rent per hour for equipment where the recording studios are located in Antwerpen.
+-- Overview of average rent per hour for equipment where the recording studios are located in Brussel.
 SELECT s.STUDIO_NAME, s.ADDRESS, r.ROOM_NAME, ROUND(AVG(e.RENTPERHOUR)) AS "Average Rent Per Hour"
 FROM RECORDING_STUDIOS S
     JOIN ROOMS R ON s.STUDIO_CODE = R.RECORDING_STUDIOS_STUDIO_CODE
